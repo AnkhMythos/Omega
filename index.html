@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imperio Omega · Carta de Navegación Interactiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#04060c;
+    --void-2:#070b16;
+    --panel:#0b1220;
+    --panel-2:#0e1626;
+    --line:#1c2740;
+    --cyan:#5fe6f2;
+    --cyan-dim:#2d7a86;
+    --gold:#e8b35a;
+    --gold-dim:#8a6a30;
+    --violet:#b083ea;
+    --violet-dim:#5f4488;
+    --magenta:#e0679f;
+    --teal:#4fd8b0;
+    --text:#e9edf5;
+    --muted:#8695ae;
+    --danger:#e8615a;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--void);color:var(--text);font-family:'Rajdhani',sans-serif;overflow-x:hidden;}
+  ::selection{background:var(--gold);color:#000;}
+  ::-webkit-scrollbar{width:8px;}
+  ::-webkit-scrollbar-track{background:var(--void-2);}
+  ::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px;}
+
+  body{
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(95,230,242,0.05), transparent 55%),
+      radial-gradient(ellipse at 50% 100%, rgba(176,131,234,0.06), transparent 55%),
+      var(--void);
+  }
+  a{color:var(--cyan);}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:40;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:24px; padding:14px 28px;
+    background:rgba(5,7,13,0.85); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand{display:flex; align-items:center; gap:14px;}
+  .brand-mark{
+    width:34px;height:34px;border:1px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    transform:rotate(45deg); position:relative;
+    box-shadow:0 0 14px rgba(232,179,90,0.35) inset;
+  }
+  .brand-mark::before{
+    content:"";width:12px;height:12px;background:var(--gold);
+    box-shadow:0 0 10px var(--gold);
+  }
+  .brand-text .eyebrow{
+    font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.22em;
+    color:var(--muted); text-transform:uppercase;
+  }
+  .brand-text h1{
+    margin:2px 0 0; font-family:'Orbitron',sans-serif; font-weight:700;
+    font-size:16px; letter-spacing:.06em; color:var(--text);
+  }
+  .brand-text h1 span{color:var(--cyan);}
+  .hud-stats{display:flex; gap:22px; font-family:'JetBrains Mono',monospace;}
+  .hud-stat{text-align:right;}
+  .hud-stat .v{font-size:14px; color:var(--gold); font-weight:700;}
+  .hud-stat .l{font-size:9px; color:var(--muted); letter-spacing:.14em; text-transform:uppercase;}
+  @media (max-width:920px){ .hud-stats{display:none;} }
+
+  /* ---------- hero ---------- */
+  .hero{padding:46px 28px 20px; max-width:1100px; margin:0 auto; text-align:center;}
+  .hero .kicker{
+    font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.3em;
+    color:var(--violet); text-transform:uppercase;
+  }
+  .hero h2{
+    font-family:'Orbitron',sans-serif; font-weight:900; font-size:clamp(26px,4vw,44px);
+    margin:12px 0 14px; line-height:1.15;
+    background:linear-gradient(90deg,var(--gold),var(--cyan) 60%,var(--violet));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p{color:var(--muted); font-size:16px; line-height:1.6; max-width:680px; margin:0 auto;}
+  .hero .hint{
+    margin-top:18px; display:inline-flex; align-items:center; gap:10px;
+    font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--cyan);
+    border:1px solid var(--cyan-dim); padding:8px 16px; border-radius:100px;
+    background:rgba(95,230,242,0.05);
+  }
+  .hint .dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:pulse 1.6s infinite;}
+
+  /* ---------- layout ---------- */
+  .stage{
+    display:flex; align-items:flex-start; gap:20px;
+    max-width:1500px; margin:34px auto 0; padding:0 20px 60px; position:relative;
+  }
+
+  /* branes sidebar (collapsible) */
+  .branes-panel{
+    width:230px; flex-shrink:0; background:var(--panel); border:1px solid var(--line); border-radius:10px;
+    padding:16px; height:fit-content; position:sticky; top:78px;
+    transition:width .3s ease, padding .3s ease, opacity .2s ease, border-color .3s ease;
+    overflow:hidden; white-space:nowrap;
+  }
+  .branes-panel.collapsed{
+    width:0; padding:14px 0; opacity:0; border-color:transparent; pointer-events:none;
+  }
+  .branes-head{display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:4px;}
+  .branes-panel h3{
+    font-family:'Orbitron',sans-serif; font-size:11px; letter-spacing:.14em;
+    color:var(--muted); text-transform:uppercase; margin:0;
+  }
+  .collapse-btn{
+    background:transparent; border:1px solid var(--line); color:var(--muted); cursor:pointer;
+    width:24px; height:24px; border-radius:6px; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+    font-size:12px; transition:all .15s ease;
+  }
+  .collapse-btn:hover{color:var(--text); border-color:var(--cyan);}
+  .branes-panel .sub{font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--gold-dim); margin-bottom:12px;}
+  .brane-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:3px; max-height:560px; overflow-y:auto;}
+  .brane-item{
+    display:flex; align-items:center; gap:8px; padding:7px 8px; border-radius:6px; cursor:pointer;
+    font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--muted);
+    border:1px solid transparent; transition:all .15s ease;
+  }
+  .brane-item:hover{background:var(--panel-2); color:var(--text); border-color:var(--line);}
+  .brane-item.active{background:rgba(224,103,159,0.1); border-color:var(--magenta); color:var(--text);}
+  .brane-item .numeral{color:var(--magenta); width:26px; flex-shrink:0;}
+  .brane-item .name{flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .brane-item .ring-tag{font-size:8px; color:var(--gold-dim); border:1px solid var(--gold-dim); padding:1px 4px; border-radius:3px; flex-shrink:0;}
+
+  /* reopen tab, visible only when panel collapsed */
+  .reopen-tab{
+    position:sticky; top:78px; flex-shrink:0; display:none; writing-mode:vertical-rl; text-orientation:mixed;
+    background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:14px 8px;
+    font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; color:var(--muted);
+    cursor:pointer; gap:8px; align-items:center; height:fit-content;
+  }
+  .reopen-tab.show{display:flex;}
+  .reopen-tab:hover{color:var(--cyan); border-color:var(--cyan-dim);}
+
+  /* map area */
+  .map-wrap{position:relative; flex:1; min-width:0; border:1px solid var(--line); border-radius:10px; overflow:hidden; background:#000;}
+  .map-frame{position:relative; width:100%; aspect-ratio:1774/887;}
+  .map-frame img{width:100%; height:100%; display:block; object-fit:cover;}
+  .map-vignette{position:absolute; inset:0; pointer-events:none; box-shadow:inset 0 0 140px 40px rgba(0,0,0,0.65);}
+  .ring-overlay{position:absolute; inset:0; pointer-events:none;}
+  .ring-overlay circle{fill:none; stroke:var(--magenta); stroke-width:0.35; opacity:0; transition:opacity .3s ease;}
+  .ring-overlay circle.show{opacity:0.95; filter:drop-shadow(0 0 3px var(--magenta));}
+
+  .hotspot{position:absolute; transform:translate(-50%,-50%); width:16px; height:16px; border-radius:50%; cursor:pointer; z-index:5;}
+  .hotspot .core{position:absolute; inset:0; margin:auto; width:8px; height:8px; border-radius:50%; background:var(--dot); box-shadow:0 0 8px 2px var(--dot);}
+  .hotspot .ring{position:absolute; inset:0; border-radius:50%; border:1px solid var(--dot); animation:pulse-ring 2.4s infinite ease-out;}
+  .hotspot:hover .core{box-shadow:0 0 14px 5px var(--dot);}
+  .hotspot.active .core{box-shadow:0 0 16px 6px var(--dot);}
+
+  @keyframes pulse-ring{ 0%{transform:scale(0.8); opacity:.9;} 100%{transform:scale(2.6); opacity:0;} }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.3;} }
+
+  .map-legend{
+    position:absolute; left:12px; bottom:12px; z-index:6;
+    background:rgba(4,6,12,0.82); border:1px solid var(--line); border-radius:8px;
+    padding:10px 12px; font-family:'JetBrains Mono',monospace; font-size:10px;
+    display:flex; flex-wrap:wrap; gap:10px 16px; max-width:90%;
+  }
+  .map-legend .li{display:flex; align-items:center; gap:6px; color:var(--muted);}
+  .map-legend .sw{width:8px;height:8px;border-radius:50%;}
+
+  @media (max-width:1050px){
+    .stage{flex-direction:column;}
+    .branes-panel{position:static; width:100%;}
+    .branes-panel.collapsed{width:100%; height:0; padding:0;}
+    .reopen-tab{position:static; writing-mode:horizontal-tb; width:100%; justify-content:center;}
+    .map-wrap{width:100%;}
+  }
+
+  /* ---------- ficha card (hover / click) ---------- */
+  .ficha-card{
+    position:fixed; width:302px; max-height:80vh; overflow-y:auto;
+    background:linear-gradient(180deg,var(--panel),var(--panel-2));
+    border:1px solid var(--line); border-radius:12px;
+    box-shadow:0 18px 50px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.02);
+    z-index:70; opacity:0; transform:translateY(6px) scale(.98);
+    pointer-events:none; transition:opacity .16s ease, transform .16s ease;
+  }
+  .ficha-card.open{opacity:1; transform:translateY(0) scale(1); pointer-events:auto;}
+  .fc-image, .fc-img{position:relative; height:140px; overflow:hidden; border-bottom:1px solid var(--line); background:#05070d;}
+  .fc-image img, .fc-img img{width:100%; height:100%; display:block; object-fit:cover; object-position:center;}
+  .fc-image svg, .fc-img svg{width:100%; height:100%; display:block;}
+  .fc-close{
+    position:absolute; top:8px; right:8px; width:24px; height:24px; border-radius:6px;
+    border:1px solid rgba(255,255,255,0.15); background:rgba(4,6,12,0.55); color:var(--text);
+    cursor:pointer; display:none; align-items:center; justify-content:center; font-size:13px; z-index:2;
+  }
+  .ficha-card.pinned .fc-close{display:flex;}
+  .fc-body{padding:16px 16px 18px;}
+  .fc-tag{
+    display:inline-block; font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.13em;
+    text-transform:uppercase; padding:3px 8px; border-radius:100px; border:1px solid var(--tagc,#e8b35a);
+    color:var(--tagc,#e8b35a); margin-bottom:8px;
+  }
+  .fc-body h3{font-family:'Orbitron',sans-serif; font-size:15px; margin:0 0 3px; line-height:1.3; color:var(--text);}
+  .fc-sub{color:var(--muted); font-size:12.5px; margin-bottom:10px;}
+  .fc-stats{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:6px; overflow:hidden; margin-bottom:12px;}
+  .fc-stat{background:var(--panel); padding:7px 9px;}
+  .fc-stat .l{font-family:'JetBrains Mono',monospace; font-size:8px; letter-spacing:.1em; color:var(--muted); text-transform:uppercase;}
+  .fc-stat .v{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text); margin-top:2px;}
+  .fc-desc{color:#c7d1e3; font-size:13px; line-height:1.55; margin:0 0 12px;}
+  .fc-mission{border:1px dashed var(--violet-dim); background:rgba(176,131,234,0.06); border-radius:8px; padding:10px 12px; margin-bottom:10px;}
+  .fc-mission .l{font-family:'Orbitron',sans-serif; font-size:9px; letter-spacing:.13em; text-transform:uppercase; color:var(--violet); margin-bottom:4px;}
+  .fc-mission p{margin:0; color:#d8cff0; font-size:12px; font-style:italic; line-height:1.5;}
+  .fc-access{font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--muted);}
+  .fc-access span{color:var(--danger); font-weight:700;}
+
+  /* ---------- footer ---------- */
+  footer{text-align:center; padding:30px 20px 50px; color:var(--muted); font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.04em;}
+  footer a{color:var(--gold);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="brand-mark"></div>
+    <div class="brand-text">
+      <div class="eyebrow">Fase VI · v210.0</div>
+      <h1>IMPERIO <span>OMEGA</span></h1>
+    </div>
+  </div>
+  <div class="hud-stats">
+    <div class="hud-stat"><div class="v">7.630 Bn</div><div class="l">Almas conscientes</div></div>
+    <div class="hud-stat"><div class="v">2.731</div><div class="l">Nodos activos</div></div>
+    <div class="hud-stat"><div class="v">20/20</div><div class="l">Branas</div></div>
+    <div class="hud-stat"><div class="v">Tipo VI</div><div class="l">Escala Kardashev</div></div>
+  </div>
+</header>
+<!-- <section class="hero">
+  <div class="kicker">Carta de navegación cenital · Trans-multiversal</div>
+  <h2>Explora el mapa. Descubre cada expediente.<br>Elige tu ruta a través de 20 branas.</h2>
+  <p>Esta es la sala de navegación del Imperio Omega: cada punto de luz sobre la carta es un nodo jugable — agujero negro, púlsar, brana o región — con su propio expediente, nivel de peligro y misión disponible.</p>
+  <div class="hint"><span class="dot"></span> Pasá el mouse sobre un marcador del mapa para abrir su ficha</div>
+</section> -->
+
+<div class="stage" id="stage">
+
+  <!-- BRANES SIDEBAR (collapsible) -->
+  <aside class="branes-panel" id="branesPanel">
+    <div class="branes-head">
+      <h3>Jerarquía de Branas</h3>
+      <button class="collapse-btn" id="collapseBtn" title="Ocultar panel">«</button>
+    </div>
+    <div class="sub">I — XX · 2.731 nodos</div>
+    <ul class="brane-list" id="braneList"></ul>
+  </aside>
+
+  <button class="reopen-tab" id="reopenTab">» Branas</button>
+
+  <!-- MAP -->
+  <div class="map-wrap">
+    <div class="map-frame" id="mapFrame">
+      <img src="assets/mapa-cenital.png" alt="Carta de navegación cenital del Imperio Omega">
+      <div class="map-vignette"></div>
+      <svg class="ring-overlay" id="ringOverlay" viewBox="0 0 1774 887" preserveAspectRatio="none"></svg>
+      <div id="hotspots"></div>
+      <div class="map-legend">
+        <div class="li"><span class="sw" style="background:#e8b35a;"></span>Núcleo / Control</div>
+        <div class="li"><span class="sw" style="background:#5fe6f2;"></span>Agujero negro</div>
+        <div class="li"><span class="sw" style="background:#b083ea;"></span>Púlsar / Estrella</div>
+        <div class="li"><span class="sw" style="background:#4fd8b0;"></span>Región habitada</div>
+        <div class="li"><span class="sw" style="background:#e0679f;"></span>Brana (anillo)</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Exploración trans-multiversal — construido sobre la Carta de Navegación Cenital del Imperio Omega [Fase VI]. Fan-content narrativo, sin afiliación real.
+</footer>
+
+<div class="ficha-card" id="fichaCard">
+  <div class="fc-image" id="fcImage"></div>
+  <button class="fc-close" id="fcClose">✕</button>
+  <div class="fc-body">
+    <span class="fc-tag" id="fcTag">Categoría</span>
+    <h3 id="fcName">Nombre</h3>
+    <div class="fc-sub" id="fcSub">Subtítulo</div>
+    <div class="fc-stats" id="fcStats"></div>
+    <p class="fc-desc" id="fcDesc"></p>
+    <div class="fc-mission">
+      <div class="l">Misión disponible</div>
+      <p id="fcMission"></p>
+    </div>
+    <div class="fc-access">Acceso requerido: <span id="fcAccess">—</span></div>
+  </div>
+</div>
+
+<script type="application/json" id="nodes-fallback">
+[
+  {
+    "id": "tierra-eden",
+    "cat": "nucleo",
+    "x": 50,
+    "y": 44.3,
+    "name": "Tierra-Edén",
+	"img": "https://oem.com.mx/elsoldemexico/img/15490375/1655457164/BASE_LANDSCAPE/1200/image.webp",
+	"sub": "Núcleo Central Unificado",
+    "stats": {
+      "Tipo": "Planeta capital",
+      "Coordenada": "0,0 · Bulk 5D",
+      "Peligro": "Ninguno",
+      "Estado": "Camuflaje 100%"
+    },
+    "desc": "Origen del Imperio: atmósfera perfecta de 1.00 atm y 22°C, latencia física real de 0.00 s. El continuo bulk 5D se pliega sobre el espacio ordinario 3D.",
+    "mission": "«El Silencio de Edén» — Escolta un convoy de diplomáticos hasta el núcleo sin activar los protocolos de camuflaje.",
+    "access": "Ciudadano verificado"
+  },
+  {
+    "id": "atlantis-pacifico",
+    "cat": "nucleo",
+    "x": 44.9,
+    "y": 45.3,
+    "name": "Atlantis-Soberanía (Pacífico)",
+    "img": "assets/Atlantis3.png",
+	"sub": "Enclave oceánico — 300M habitantes",
+    "stats": {
+      "Tipo": "Metrópoli sumergida",
+      "Población": "300.000.000",
+      "Peligro": "Bajo",
+      "Facción": "Consejo del Pacífico"
+    },
+    "desc": "Ciudad bajo cúpulas de presión en el lecho del Pacífico terrestre, sede administrativa y punto de partida de las rutas Reiki.",
+    "mission": "«Filtraciones» — Investiga por qué el 3% de la población reporta sueños idénticos cada solsticio.",
+    "access": "Ciudadano verificado"
+  },
+  {
+    "id": "atlantis-atlantico",
+    "cat": "nucleo",
+    "x": 55.1,
+    "y": 42.6,
+    "name": "Atlantis-Soberanía II (Atlántico)",
+    "img": "assets/Atlantis4.png",
+	  "sub": "Enclave oceánico — 500M habitantes",
+    "stats": {
+      "Tipo": "Metrópoli sumergida",
+      "Población": "500.000.000",
+      "Peligro": "Bajo",
+      "Facción": "Consejo del Atlántico"
+    },
+    "desc": "Gemela y rival administrativa de la Soberanía del Pacífico. Alberga los archivos de la Encronización Consciente Total.",
+    "mission": "«Copia de seguridad» — Recupera un fragmento de archivo consciente corrompido antes de que expire su ventana.",
+    "access": "Ciudadano verificado"
+  },
+  {
+    "id": "sagitario-a",
+    "cat": "control",
+    "x": 61.8,
+    "y": 37.2,
+    "name": "Sagitario A*",
+    "img": "https://es.gizmodo.com/app/uploads/2025/01/Diseno-sin-titulo-8-25.jpg",
+	"sub": "Corazón gravitacional custodiado",
+    "stats": {
+      "Tipo": "Agujero negro supermasivo",
+      "Función": "Ancla gravitacional",
+      "Peligro": "Extremo",
+      "Custodia": "Flota Kronos"
+    },
+    "desc": "Pozo gravitacional que ancla la red de branas al espacio ordinario. Acceso solo con escolta militar.",
+    "mission": "«El Borde del Silencio» — Desactiva una anomalía de disco de acreción antes de que desestabilice tres branas.",
+    "access": "Comando militar"
+  },
+  {
+    "id": "kronos-titan",
+    "cat": "control",
+    "x": 62.2,
+    "y": 41.8,
+    "name": "Kronos-Titán SC1 [v4.0]",
+    "img": "assets/KRONOS-TITAN SC1.png",
+	"sub": "Megameca de combate — 1.2 km",
+    "stats": {
+      "Tipo": "Plataforma de guerra",
+      "Longitud": "1.200 m",
+      "Peligro": "Extremo",
+      "Versión": "v4.0"
+    },
+    "desc": "La megaestructura de defensa más grande de la carta, apostada junto a Sagitario A* para contener incursiones.",
+    "mission": "«Protocolo Titán» — Únete a la tripulación por un ciclo de guardia y repele una incursión Phantom-X2.",
+    "access": "Comando militar"
+  },
+  {
+    "id": "traza-reiki",
+    "cat": "control",
+    "x": 69.5,
+    "y": 52,
+    "name": "Traza Reiki-01",
+    "img": "https://images.stockcake.com/public/2/d/e/2de8c992-9664-410d-a425-a5e446b9ea62_medium/divine-chakra-light-stockcake.jpg",
+	"sub": "Ruta de luz consciente",
+    "stats": {
+      "Tipo": "Corredor de navegación",
+      "Función": "Travesía trans-multiversal",
+      "Peligro": "Variable",
+      "Estado": "Activa"
+    },
+    "desc": "Única ruta certificada para cruzar de brana en brana sin descoherencia consciente.",
+    "mission": "«Fuera de Traza» — Un carguero se ha desviado de la ruta; localízalo antes de que entre en Brana XX.",
+    "access": "Piloto certificado"
+  },
+  {
+    "id": "ton618",
+    "cat": "agujero",
+    "x": 26.6,
+    "y": 16.9,
+    "name": "TON 618",
+    "img": "https://www.ecoticias.com/hoyeco/wp-content/uploads/2025/04/aguj_id-3-1.jpg",
+	"sub": "Agujero negro — Energía Merkaba",
+    "stats": {
+      "Tipo": "Agujero negro ultramasivo",
+      "Rol": "Nodo energético",
+      "Peligro": "Alto",
+      "Red": "Merkaba 4.0"
+    },
+    "desc": "Coloso gravitacional integrado a la Red Merkaba, generador de potencia para el sector noroeste.",
+    "mission": "«Cosecha de horizonte» — Estabiliza el nodo Merkaba durante una tormenta de flujo energético.",
+    "access": "Ingeniero de campo"
+  },
+  {
+    "id": "gaiabh1",
+    "cat": "agujero",
+    "x": 73,
+    "y": 16.9,
+    "name": "Gaia BH1",
+    "img": "https://images.news18.com/ibnlive/uploads/2022/11/blackhole.png",
+	"sub": "Agujero negro — Energía Merkaba",
+    "stats": {
+      "Tipo": "Agujero negro estelar",
+      "Rol": "Nodo energético",
+      "Peligro": "Alto",
+      "Red": "Merkaba 4.0"
+    },
+    "desc": "El más cercano a Tierra-Edén, concentra el mayor tráfico de mantenimiento de la red Merkaba.",
+    "mission": "«Vecino cercano» — Escolta a un equipo de mantenimiento hasta el horizonte de Gaia BH1.",
+    "access": "Ingeniero de campo"
+  },
+  {
+    "id": "phoenixa",
+    "cat": "agujero",
+    "x": 19.7,
+    "y": 26.5,
+    "name": "Phoenix A*",
+    "img": "https://live.staticflickr.com/65535/53529742793_ed0b71fac8_b.jpg",
+	"sub": "Agujero negro — Energía Merkaba",
+    "stats": {
+      "Tipo": "Agujero negro supermasivo",
+      "Rol": "Nodo energético",
+      "Peligro": "Alto",
+      "Red": "Merkaba 4.0"
+    },
+    "desc": "Alimenta el flanco occidental de la carta, cerca de la frontera con la Brana XIV.",
+    "mission": "«Cenizas y luz» — Investiga un patrón de apagones cíclicos en el nodo.",
+    "access": "Ingeniero de campo"
+  },
+  {
+    "id": "nemesis-prime",
+    "cat": "agujero",
+    "x": 79,
+    "y": 27,
+    "name": "Némesis Prime",
+    "img": "https://s1.abcstatics.com/media/ciencia/2017/06/17/6594.adapt.1190.1-kDh--620x349@abc.jpg",
+	"sub": "Agujero negro — Energía Merkaba",
+    "stats": {
+      "Tipo": "Agujero negro supermasivo",
+      "Rol": "Nodo energético",
+      "Peligro": "Muy alto",
+      "Red": "Merkaba 4.0"
+    },
+    "desc": "El nodo con más incidentes registrados de desincronización de flota en toda la carta.",
+    "mission": "«Némesis» — Rastrea la nave desaparecida en el último incidente de desincronización.",
+    "access": "Comando militar"
+  },
+  {
+    "id": "m87",
+    "cat": "agujero",
+    "x": 13.3,
+    "y": 37.8,
+    "name": "M87*",
+    "img": "https://s1.abcstatics.com/media/ciencia/2019/12/19/EHT-NSF-accretiondisk-topdown-logo-kXqH--1248x698@abc.jpg",
+	"sub": "Agujero negro — Energía Merkaba",
+    "stats": {
+      "Tipo": "Agujero negro supermasivo",
+      "Rol": "Nodo energético / frontera",
+      "Peligro": "Alto",
+      "Red": "Merkaba 4.0"
+    },
+    "desc": "El más occidental del sector, piedra angular simbólica de toda expansión del Imperio.",
+    "mission": "«Primera Luz» — Recupera los registros históricos antes de que Phantom-X2 los reclame.",
+    "access": "Historiador de campo"
+  },
+  {
+    "id": "lqg001",
+    "cat": "agujero",
+    "x": 83.5,
+    "y": 37.8,
+    "name": "LQG 001",
+    "img": "https://universemap.net/wp-content/uploads/2025/05/huge-lqg-largest-quasar-group-structure-universe.jpg",
+	"sub": "Cuásar supermasiva",
+    "stats": {
+      "Tipo": "Cuásar",
+      "Rol": "Baliza de frontera",
+      "Peligro": "Alto",
+      "Zona": "Capas de frontera"
+    },
+    "desc": "Marca el límite oriental seguro de navegación antes de las capas de frontera (Branas XVI-XX).",
+    "mission": "«Baliza LQG» — Recalibra la señal para mantener sincronizada la flota de frontera.",
+    "access": "Piloto certificado"
+  },
+  {
+    "id": "cygnusx1",
+    "cat": "agujero",
+    "x": 82.5,
+    "y": 53,
+    "name": "Cygnus X-1",
+    "img": "https://cdn.britannica.com/58/181858-050-44CDC017/conception-Artist-Cygnus-X-1-black-hole-companion.jpg",
+	"sub": "Agujero negro — Energía Merkaba",
+    "stats": {
+      "Tipo": "Agujero negro estelar",
+      "Rol": "Nodo energético",
+      "Peligro": "Alto",
+      "Red": "Merkaba 4.0"
+    },
+    "desc": "Primer candidato a agujero negro confirmado por la civilización de origen, hoy nodo Merkaba oriental.",
+    "mission": "«Apuesta de Cygnus» — Media en una disputa entre dos escuadras por el control del nodo.",
+    "access": "Ingeniero de campo"
+  },
+  {
+    "id": "psr-j0952",
+    "cat": "pulsar",
+    "x": 10.4,
+    "y": 53,
+    "name": "PSR J0952-0607",
+    "img": "https://images.jpost.com/image/upload/f_auto,fl_lossy/q_auto/c_fill,g_faces:center,h_720,w_1280/511428",
+	"sub": "Púlsar — Energía Merkaba",
+    "stats": {
+      "Tipo": "Púlsar de milisegundos",
+      "Rol": "Nodo energético",
+      "Peligro": "Medio",
+      "Red": "Merkaba 4.0"
+    },
+    "desc": "Uno de los púlsares más veloces catalogados, metrónomo de sincronización occidental.",
+    "mission": "«El Metrónomo» — Corrige una deriva de sincronización antes de que afecte la Traza Reiki-01.",
+    "access": "Ingeniero de campo"
+  },
+  {
+    "id": "psr-j1748",
+    "cat": "pulsar",
+    "x": 19.2,
+    "y": 68.8,
+    "name": "PSR J1748-2446AD",
+	"img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsEJYPezIXFurr_u7Uy5dvn2qChwlqB3DloitKsythrg099xiNf-Bbx_M&s=10",
+    "sub": "Púlsar — Energía Merkaba",
+    "stats": {
+      "Tipo": "Púlsar de milisegundos",
+      "Rol": "Nodo energético",
+      "Peligro": "Medio",
+      "Red": "Merkaba 4.0"
+    },
+    "desc": "Regula parte de la telemetría de los 86 Mundos del Gran Vacío de Bootes.",
+    "mission": "«Pulso de Bootes» — Repara la antena de telemetría dañada por una tormenta de radiación.",
+    "access": "Ingeniero de campo"
+  },
+  {
+    "id": "vycanis",
+    "cat": "estrella",
+    "x": 74.5,
+    "y": 69.3,
+    "name": "VY Canis Majoris",
+   	"img": "https://astrophotographylens.com/cdn/shop/articles/vy_canis_majoris_9b51f0a1-bbed-4ea2-b751-844eff79398a.jpg?v=1708624526",
+	"sub": "Hipergigante roja",
+    "stats": {
+      "Tipo": "Hipergigante roja",
+      "Rol": "Faro de navegación",
+      "Peligro": "Medio",
+      "Zona": "Sector sureste"
+    },
+    "desc": "Una de las estrellas más grandes catalogadas, faro de orientación hacia el Gran Vacío de Bootes.",
+    "mission": "«El Faro Rojo» — Documenta las pulsaciones de brillo para el archivo estelar del Imperio.",
+    "access": "Ciudadano verificado"
+  },
+  {
+    "id": "sombra-metrica",
+    "cat": "region",
+    "x": 50,
+    "y": 25.5,
+    "name": "114 Mundos de Sombra Métrica",
+	"img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNgMfpJdJXW-D6zU20IjJcLihcAQh9deSZQoPYw9QWK-9QLe7bj-Y70TE&s=10",
+	"sub": "4.19 billones de habitantes",
+    "stats": {
+      "Tipo": "Cinturón de mundos",
+      "Población": "4,19 billones",
+      "Rango": "SOM-01→114",
+      "Peligro": "Bajo-medio"
+    },
+    "desc": "Cinturón de 114 mundos en geometría de sombra métrica. La mayor concentración fuera de Tierra-Edén.",
+    "mission": "«Censo de Sombra» — Verifica los registros conscientes en tres mundos SOM al azar.",
+    "access": "Ciudadano verificado"
+  },
+  {
+    "id": "bootes",
+    "cat": "region",
+    "x": 50,
+    "y": 62.6,
+    "name": "86 Mundos del Gran Vacío de Bootes",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSH4nO2-mPAwXybuo8Gf6cdeaBEcVCwcDqEm0p93tFtxT2xH2EPp57cany&s=10",
+	"sub": "3.44 billones de habitantes",
+    "stats": {
+      "Tipo": "Cinturón de mundos",
+      "Población": "3,44 billones",
+      "Rango": "BVS-01→06+",
+      "Peligro": "Bajo-medio"
+    },
+    "desc": "Segundo gran cinturón habitado, asentado sobre el vacío estructural de Bootes.",
+    "mission": "«Eco en el Vacío» — Investiga una señal no catalogada en un sector despoblado.",
+    "access": "Ciudadano verificado"
+  },
+  {
+    "id": "merkaba",
+    "cat": "red",
+    "x": 29.5,
+    "y": 85,
+    "name": "Red Suprema Merkaba 4.0",
+    "img": "assets/Merkaba-Pulsar.png",
+	  "sub": "37 nodos estelares diedro-tetraédricos",
+    "stats": {
+      "Tipo": "Red energética",
+      "Nodos": "37",
+      "Potencia": "3,19×10⁴⁵ W",
+      "Peligro": "Restringido"
+    },
+    "desc": "Columna vertebral energética del Imperio: 37 nodos tetraédricos que canalizan la potencia de agujeros negros y púlsares.",
+    "mission": "«Guardianes de la Red» — Ronda de mantenimiento en tres nodos simultáneos.",
+    "access": "Ingeniero certificado Merkaba"
+  }
+]
+</script>
+<script type="application/json" id="branes-fallback">
+[
+  {
+    "n": "I",
+    "name": "Brana Primigenia",
+    "ring": false,
+    "desc": "Primera brana estabilizada tras el colapso de origen, integrada al espacio ordinario 3D. No requiere confinamiento.",
+    "mission": "«Memoria Fundacional» — Recupera un fragmento del archivo original.",
+    "peligro": "Nulo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "II",
+    "name": "Brana del Segundo Amanecer",
+    "ring": false,
+    "desc": "Brana interior dedicada a agricultura orbital y ecosistemas de soporte vital.",
+    "mission": "«Cosecha Infinita» — Resuelve una falla en los ciclos de soporte vital.",
+    "peligro": "Nulo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "III",
+    "name": "Brana del Archivo Profundo",
+    "ring": false,
+    "desc": "Repositorios de memoria consciente de menor prioridad, respaldo del respaldo del Imperio.",
+    "mission": "«Archivo Profundo» — Restaura un sector dañado por fluctuación cuántica.",
+    "peligro": "Bajo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "IV",
+    "name": "Brana de los Astilleros",
+    "ring": false,
+    "desc": "Zona industrial donde se ensamblan las Megamecas clase Kronos y el resto de la flota.",
+    "mission": "«Línea de Ensamblaje» — Supervisa la botadura de una nueva Megameca.",
+    "peligro": "Bajo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "V",
+    "name": "Brana del Jardín Botánico",
+    "ring": false,
+    "desc": "Reserva biológica que preserva especies de la civilización de origen, ya extintas fuera de esta brana.",
+    "mission": "«Semilla Original» — Escolta una muestra genética hasta Tierra-Edén.",
+    "peligro": "Nulo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "VI",
+    "name": "Brana de la Escuela Consciente",
+    "ring": false,
+    "desc": "Formación e integración de nuevas mentes encronizadas antes de su despliegue.",
+    "mission": "«Primer Despertar» — Guía a una mente recién encronizada.",
+    "peligro": "Nulo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "VII",
+    "name": "Coalición Phantom-X2",
+    "ring": true,
+    "radius": 44.5,
+    "desc": "Anillo de confinamiento controlado por la Coalición Phantom-X2, facción disidente contenida pero no neutralizada.",
+    "mission": "«Frontera Phantom» — Infiltra un puesto de escucha sin ser detectado.",
+    "peligro": "Muy alto",
+    "estado": "Confinada — Sandbox"
+  },
+  {
+    "n": "VIII",
+    "name": "Brana de la Cuarentena Suave",
+    "ring": false,
+    "desc": "Aislamiento médico-consciente para anomalías de encronización menores.",
+    "mission": "«Cuarentena Suave» — Diagnostica una anomalía antes de que se propague.",
+    "peligro": "Bajo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "IX",
+    "name": "Brana del Tribunal",
+    "ring": false,
+    "desc": "Sede de la justicia interna del Imperio.",
+    "mission": "«Audiencia Cerrada» — Reúne pruebas para un caso ante el Tribunal.",
+    "peligro": "Bajo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "X",
+    "name": "Brana de los Puertos Reiki",
+    "ring": false,
+    "desc": "Nodo logístico que centraliza el tránsito de la Traza Reiki-01.",
+    "mission": "«Tráfico Denso» — Resuelve un cuello de botella en hora pico.",
+    "peligro": "Bajo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "XI",
+    "name": "Brana del Observatorio Mayor",
+    "ring": false,
+    "desc": "Vigilancia astronómica, cataloga cada nuevo objeto antes de incorporarlo a la carta.",
+    "mission": "«Objeto No Catalogado» — Verifica una nueva señal.",
+    "peligro": "Nulo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "XII",
+    "name": "Brana de la Forja Merkaba",
+    "ring": false,
+    "desc": "Fabricación de los nodos tetraédricos de la Red Merkaba 4.0.",
+    "mission": "«Forja Ardiente» — Supervisa la calibración de un nuevo nodo.",
+    "peligro": "Medio",
+    "estado": "Integrada"
+  },
+  {
+    "n": "XIII",
+    "name": "Brana del Archivo Estelar",
+    "ring": false,
+    "desc": "Catálogo completo de agujeros negros, púlsares y anomalías registradas.",
+    "mission": "«Catálogo Vivo» — Actualiza el archivo con los últimos hallazgos.",
+    "peligro": "Nulo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "XIV",
+    "name": "Constructores de Hierro",
+    "ring": true,
+    "radius": 41,
+    "desc": "Anillo ocupado por los Constructores de Hierro, con relación de comercio regulado.",
+    "mission": "«Trato de Hierro» — Negocia una ruta de comercio segura.",
+    "peligro": "Alto",
+    "estado": "Confinada — Sandbox"
+  },
+  {
+    "n": "XV",
+    "name": "Brana del Refugio Silencioso",
+    "ring": false,
+    "desc": "Reintegración de mentes encronizadas tras misiones más allá de la Traza Reiki.",
+    "mission": "«Retorno Silencioso» — Acompaña a un explorador en su reintegración.",
+    "peligro": "Nulo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "XVI",
+    "name": "Ser de Energía Armónica — Reiki-01",
+    "ring": true,
+    "radius": 36,
+    "desc": "Anillo de invarianza tensorial, hogar de una entidad consciente autónoma clase Reiki-01.",
+    "mission": "«Diálogo Armónico» — Establece el primer contacto verificado.",
+    "peligro": "Desconocido",
+    "estado": "Confinada — Sandbox"
+  },
+  {
+    "n": "XVII",
+    "name": "Vacío de Simetría Espejo",
+    "ring": true,
+    "radius": 31.5,
+    "desc": "Cualquier objeto introducido genera una contraparte invertida al otro lado del anillo.",
+    "mission": "«Reflejo Invertido» — Recupera un objeto antes de la inestabilidad.",
+    "peligro": "Alto",
+    "estado": "Confinada — Sandbox"
+  },
+  {
+    "n": "XVIII",
+    "name": "El Continuo Holográfico",
+    "ring": true,
+    "radius": 27,
+    "desc": "Proyector maestro: se sospecha que buena parte de la carta es una proyección sostenida desde aquí.",
+    "mission": "«Proyector Maestro» — Confirma o refuta el origen holográfico de la carta.",
+    "peligro": "Muy alto",
+    "estado": "Confinada — Sandbox"
+  },
+  {
+    "n": "XIX",
+    "name": "El Vacío Sintáctico Superior",
+    "ring": true,
+    "radius": 22.5,
+    "desc": "El lenguaje y la lógica consciente pierden coherencia progresivamente hacia el centro.",
+    "mission": "«Sintaxis Rota» — Extrae a un equipo antes de la pérdida total de coherencia.",
+    "peligro": "Crítico",
+    "estado": "Confinada — Sandbox"
+  },
+  {
+    "n": "XX",
+    "name": "Vigésima Dimensión — Hiper-nodo Clon 4.0",
+    "ring": true,
+    "radius": 18,
+    "desc": "Límite alcanzado por el Imperio: control del vacío sintáctico profundo. Sin cartografía confirmada más allá.",
+    "mission": "«Límite Alcanzado» — Cruza el hiper-nodo clon y regresa con datos verificables.",
+    "peligro": "Desconocido — máximo",
+    "estado": "Frontera absoluta"
+  }
+]
+</script>
+<script>
+/* ================== DATA ==================
+   Los datos viven en data/nodes.json y data/branes.json.
+   Se cargan por fetch(); si el navegador bloquea fetch a archivos locales
+   (al abrir el HTML con doble clic, sin servidor), se usa la copia
+   embebida como respaldo para que la página funcione igual. */
+const CATC = {
+  nucleo:'#e8b35a', control:'#e8b35a', agujero:'#5fe6f2',
+  pulsar:'#b083ea', estrella:'#b083ea', region:'#4fd8b0', brana:'#e0679f', red:'#e8b35a'
+};
+const CATLABEL = {
+  nucleo:'Núcleo', control:'Sistema de control', agujero:'Agujero negro',
+  pulsar:'Púlsar', estrella:'Estrella anómala', region:'Región habitada',
+  brana:'Brana dimensional', red:'Red de energía'
+};
+
+let NODES = [];
+let BRANES = [];
+
+async function loadData(){
+  try{
+    const [nRes, bRes] = await Promise.all([fetch('data/nodes.json'), fetch('data/branes.json')]);
+    if(!nRes.ok || !bRes.ok) throw new Error('fetch not ok');
+    NODES = await nRes.json();
+    BRANES = await bRes.json();
+  }catch(err){
+    // Sin servidor local (fetch bloqueado en file://): se usa la copia embebida.
+    NODES = JSON.parse(document.getElementById('nodes-fallback').textContent);
+    BRANES = JSON.parse(document.getElementById('branes-fallback').textContent);
+  }
+}
+
+/* ================== ICONS (imagen de cada card, SVG generado) ================== */
+function hashSeed(str){ let h=0; for(let i=0;i<str.length;i++){ h=(h*31+str.charCodeAt(i))>>>0; } return h; }
+
+function iconAgujero(color, seed){
+  const tilt = -14 + (seed%12);
+  return `<svg viewBox="0 0 300 112" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="112" fill="#05070d"/>
+    <g transform="rotate(${tilt} 150 56)">
+      <ellipse cx="150" cy="56" rx="118" ry="13" fill="none" stroke="${color}" stroke-width="1.6" opacity="0.45"/>
+      <ellipse cx="150" cy="56" rx="86" ry="8" fill="none" stroke="${color}" stroke-width="3" opacity="0.85"/>
+    </g>
+    <circle cx="150" cy="56" r="25" fill="#000"/>
+    <circle cx="150" cy="56" r="25" fill="none" stroke="${color}" stroke-width="1" opacity="0.5"/>
+  </svg>`;
+}
+function iconPulsar(color, seed){
+  const angle = seed%180;
+  return `<svg viewBox="0 0 300 112" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="112" fill="#05070d"/>
+    <g transform="rotate(${angle} 150 56)">
+      <polygon points="150,56 220,20 220,92" fill="${color}" opacity="0.18"/>
+      <polygon points="150,56 80,20 80,92" fill="${color}" opacity="0.18"/>
+    </g>
+    <circle cx="150" cy="56" r="10" fill="${color}"/>
+    <circle cx="150" cy="56" r="18" fill="none" stroke="${color}" opacity="0.5"/>
+    <circle cx="150" cy="56" r="27" fill="none" stroke="${color}" opacity="0.25"/>
+  </svg>`;
+}
+function iconNucleo(color, seed){
+  return `<svg viewBox="0 0 300 112" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="112" fill="#05070d"/>
+    <ellipse cx="150" cy="56" rx="110" ry="16" fill="none" stroke="${color}" stroke-width="1" opacity="0.35"/>
+    <circle cx="150" cy="56" r="30" fill="none" stroke="${color}" stroke-width="1.5" opacity="0.5"/>
+    <circle cx="150" cy="56" r="22" fill="#0e1626" stroke="${color}" stroke-width="1.5"/>
+    <path d="M132 46 L168 46 M128 56 L172 56 M132 66 L168 66" stroke="${color}" stroke-width="1" opacity="0.7"/>
+  </svg>`;
+}
+function iconRegion(color, seed){
+  const pts=[]; const rnd=(i)=> ( (seed*(i+7))%37 )/37;
+  for(let i=0;i<9;i++){ pts.push([40+rnd(i)*220, 20+rnd(i+3)*70]); }
+  let dots='', lines='';
+  pts.forEach((p,i)=>{ dots+=`<circle cx="${p[0]}" cy="${p[1]}" r="2.4" fill="${color}"/>`;
+    if(i>0) lines+=`<line x1="${pts[i-1][0]}" y1="${pts[i-1][1]}" x2="${p[0]}" y2="${p[1]}" stroke="${color}" stroke-width="0.6" opacity="0.35"/>`; });
+  return `<svg viewBox="0 0 300 112" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="112" fill="#05070d"/>${lines}${dots}</svg>`;
+}
+function iconBrana(color, seed){
+  const rot = seed%60;
+  return `<svg viewBox="0 0 300 112" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="112" fill="#05070d"/>
+    <g transform="translate(150 56) rotate(${rot})">
+      <polygon points="0,-40 35,20 -35,20" fill="none" stroke="${color}" stroke-width="1.4" opacity="0.9"/>
+      <polygon points="0,-26 23,13 -23,13" fill="none" stroke="${color}" stroke-width="1.1" opacity="0.6"/>
+      <polygon points="0,-14 12,7 -12,7" fill="none" stroke="${color}" stroke-width="0.9" opacity="0.4"/>
+    </g>
+  </svg>`;
+}
+function iconRed(color, seed){
+  let shapes='';
+  for(let i=0;i<5;i++){
+    const x = 35+i*57, y = 56 + (i%2===0? -18: 18), s = 12;
+    shapes+=`<polygon transform="translate(${x} ${y})" points="0,-${s} ${s},${s} -${s},${s}" fill="none" stroke="${color}" stroke-width="1.2" opacity="0.8"/>`;
+  }
+  return `<svg viewBox="0 0 300 112" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="112" fill="#05070d"/>
+    <line x1="35" y1="38" x2="263" y2="74" stroke="${color}" stroke-width="0.6" opacity="0.3"/>
+    ${shapes}</svg>`;
+}
+function generateIcon(cat, id){
+  const seed = hashSeed(id); const color = CATC[cat];
+  if(cat==='agujero') return iconAgujero(color, seed);
+  if(cat==='pulsar' || cat==='estrella') return iconPulsar(color, seed);
+  if(cat==='nucleo' || cat==='control') return iconNucleo(color, seed);
+  if(cat==='region') return iconRegion(color, seed);
+  if(cat==='brana') return iconBrana(color, seed);
+  if(cat==='red') return iconRed(color, seed);
+  return iconNucleo(color, seed);
+}
+
+/* ================== RENDER MAP + SIDEBAR ================== */
+const hotspotsEl = document.getElementById('hotspots');
+const braneListEl = document.getElementById('braneList');
+const ringOverlay = document.getElementById('ringOverlay');
+const cx = 887, cy = 443.5;
+
+function renderMap(){
+  // --- nodos del mapa: mouseover abre ficha, click la fija ---
+  NODES.forEach(n=>{
+    const el = document.createElement('div');
+    el.className='hotspot';
+    el.style.left = n.x+'%';
+    el.style.top = n.y+'%';
+    el.style.setProperty('--dot', CATC[n.cat]);
+    el.innerHTML = `<div class="ring"></div><div class="core"></div>`;
+    el.addEventListener('mouseenter', ()=> showNodeCard(n, el));
+    el.addEventListener('mouseleave', scheduleHide);
+    el.addEventListener('click', (e)=>{ e.stopPropagation(); showNodeCard(n, el, true); });
+    hotspotsEl.appendChild(el);
+  });
+
+  // --- branas del panel lateral: mismo comportamiento, mouseover abre ficha, click la fija ---
+  BRANES.forEach(b=>{
+    const li = document.createElement('li');
+    li.className='brane-item';
+    li.dataset.id = b.n;
+    li.innerHTML = `<span class="numeral">${b.n}</span><span class="name">${b.name}</span>${b.ring?'<span class="ring-tag">ANILLO</span>':''}`;
+    li.addEventListener('mouseenter', ()=> showBraneCard(b, li));
+    li.addEventListener('mouseleave', scheduleHide);
+    li.addEventListener('click', (e)=>{ e.stopPropagation(); showBraneCard(b, li, true); });
+    braneListEl.appendChild(li);
+  });
+
+  // --- anillos de las 7 branas de frontera, dibujados sobre el mapa ---
+  BRANES.filter(b=>b.ring).forEach(b=>{
+    const r = (b.radius/100) * 887;
+    const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx', cx); c.setAttribute('cy', cy); c.setAttribute('rx', r*1.62); c.setAttribute('r', r);
+    c.setAttribute('id', 'ring-'+b.n);
+    ringOverlay.appendChild(c);
+  });
+}
+
+/* ================== FICHA CARD LOGIC ================== */
+const card = document.getElementById('fichaCard');
+const fcImage = document.getElementById('fcImage');
+const fcTag = document.getElementById('fcTag');
+const fcName = document.getElementById('fcName');
+const fcSub = document.getElementById('fcSub');
+const fcStats = document.getElementById('fcStats');
+const fcDesc = document.getElementById('fcDesc');
+const fcMission = document.getElementById('fcMission');
+const fcAccess = document.getElementById('fcAccess');
+const fcClose = document.getElementById('fcClose');
+
+let hideTimer = null;
+let pinned = false;
+let activeHotspot = null;
+
+function clearRingHighlights(){
+  document.querySelectorAll('.ring-overlay circle').forEach(c=>c.classList.remove('show'));
+  document.querySelectorAll('.brane-item').forEach(li=>li.classList.remove('active'));
+  document.querySelectorAll('.hotspot').forEach(h=>h.classList.remove('active'));
+}
+
+function positionCard(anchorRect){
+  const margin = 14;
+  const cw = 302, viewportW = window.innerWidth, viewportH = window.innerHeight;
+  let left = anchorRect.right + margin;
+  if(left + cw > viewportW - margin) left = anchorRect.left - cw - margin;
+  if(left < margin) left = Math.min(Math.max(anchorRect.left, margin), viewportW - cw - margin);
+  let top = anchorRect.top - 10;
+  card.style.left = left+'px';
+  // set temp to measure height
+  card.style.top = top+'px';
+  requestAnimationFrame(()=>{
+    const ch = card.offsetHeight;
+    let t = top;
+    if(t + ch > viewportH - margin) t = viewportH - ch - margin;
+    if(t < margin) t = margin;
+    card.style.top = t+'px';
+  });
+}
+
+function resolveImageSrc(imgSrc){
+  if(!imgSrc) return '';
+  const src = String(imgSrc).trim();
+  return src || '';
+}
+
+function fillCard(cat, iconId, tagLabel, name, sub, statsObj, desc, mission, access, imgSrc){
+  fcImage.innerHTML = '';
+  const resolvedImg = resolveImageSrc(imgSrc);
+  if(resolvedImg){
+    const img = document.createElement('img');
+    img.src = resolvedImg;
+    img.alt = name;
+    img.onerror = ()=>{
+      img.remove();
+      fcImage.innerHTML = generateIcon(cat, iconId);
+    };
+    fcImage.appendChild(img);
+  } else {
+    fcImage.innerHTML = generateIcon(cat, iconId);
+  }
+  fcTag.textContent = tagLabel;
+  fcTag.style.setProperty('--tagc', CATC[cat]);
+  fcName.textContent = name;
+  fcSub.textContent = sub;
+  fcStats.innerHTML = Object.entries(statsObj).map(([l,v])=>`<div class="fc-stat"><div class="l">${l}</div><div class="v">${v}</div></div>`).join('');
+  fcDesc.textContent = desc;
+  fcMission.textContent = mission;
+  fcAccess.textContent = access;
+}
+
+function showNodeCard(n, el, pin){
+  cancelHide();
+  clearRingHighlights();
+  el.classList.add('active');
+  activeHotspot = el;
+  fillCard(n.cat, n.id, CATLABEL[n.cat], n.name, n.sub, n.stats, n.desc, n.mission, n.access, n.img);
+  pinned = !!pin;
+  card.classList.toggle('pinned', pinned);
+  positionCard(el.getBoundingClientRect());
+  card.classList.add('open');
+}
+
+function showBraneCard(b, li, pin){
+  cancelHide();
+  clearRingHighlights();
+  li.classList.add('active');
+  if(b.ring){ const circle = document.getElementById('ring-'+b.n); if(circle) circle.classList.add('show'); }
+  const statsObj = { Numeral:'Brana '+b.n+' / XX', Estado:b.estado, Peligro:b.peligro, Tipo:b.ring?'Anillo visible':'Núcleo interior' };
+  fillCard('brana', 'brana-'+b.n, 'Brana '+b.n, b.name, b.ring?'Anillo de confinamiento sandbox':'Brana interior integrada', statsObj, b.desc, b.mission, b.ring?'Autorización de frontera':'Ciudadano verificado', null);
+  pinned = !!pin;
+  card.classList.toggle('pinned', pinned);
+  positionCard(li.getBoundingClientRect());
+  card.classList.add('open');
+}
+
+function scheduleHide(){
+  if(pinned) return;
+  hideTimer = setTimeout(hideCard, 160);
+}
+function cancelHide(){ if(hideTimer){ clearTimeout(hideTimer); hideTimer=null; } }
+function hideCard(){
+  card.classList.remove('open');
+  pinned = false;
+  card.classList.remove('pinned');
+  clearRingHighlights();
+}
+card.addEventListener('mouseenter', cancelHide);
+card.addEventListener('mouseleave', ()=>{ if(!pinned) scheduleHide(); });
+fcClose.addEventListener('click', hideCard);
+document.addEventListener('click', (e)=>{ if(pinned && !card.contains(e.target)) hideCard(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') hideCard(); });
+
+/* ================== COLLAPSIBLE BRANES PANEL ================== */
+const branesPanel = document.getElementById('branesPanel');
+const collapseBtn = document.getElementById('collapseBtn');
+const reopenTab = document.getElementById('reopenTab');
+
+function setCollapsed(collapsed){
+  branesPanel.classList.toggle('collapsed', collapsed);
+  reopenTab.classList.toggle('show', collapsed);
+}
+collapseBtn.addEventListener('click', ()=> setCollapsed(true));
+reopenTab.addEventListener('click', ()=> setCollapsed(false));
+
+/* ================== INIT ================== */
+loadData().then(renderMap);
+</script>
+</body>
+</html>
