@@ -1,0 +1,344 @@
+[
+  {
+    "id": "tierra-eden",
+    "cat": "nucleo",
+    "x": 50,
+    "y": 44.3,
+    "name": "Tierra-Edén",
+	"img": "https://oem.com.mx/elsoldemexico/img/15490375/1655457164/BASE_LANDSCAPE/1200/image.webp",
+	"sub": "Núcleo Central Unificado",
+    "stats": {
+      "Tipo": "Planeta capital",
+      "Coordenada": "0,0 · Bulk 5D",
+      "Peligro": "Ninguno",
+      "Estado": "Camuflaje 100%"
+    },
+    "desc": "Origen del Imperio: atmósfera perfecta de 1.00 atm y 22°C, latencia física real de 0.00 s. El continuo bulk 5D se pliega sobre el espacio ordinario 3D.",
+    "mission": "«El Silencio de Edén» — Escolta un convoy de diplomáticos hasta el núcleo sin activar los protocolos de camuflaje.",
+    "access": "Ciudadano verificado"
+  },
+  {
+    "id": "atlantis-pacifico",
+    "cat": "nucleo",
+    "x": 44.9,
+    "y": 45.3,
+    "name": "Atlantis-Soberanía (Pacífico)",
+    "img": "assets/Atlantis3.png",
+	"sub": "Enclave oceánico — 300M habitantes",
+    "stats": {
+      "Tipo": "Metrópoli sumergida",
+      "Población": "300.000.000",
+      "Peligro": "Bajo",
+      "Facción": "Consejo del Pacífico"
+    },
+    "desc": "Ciudad bajo cúpulas de presión en el lecho del Pacífico terrestre, sede administrativa y punto de partida de las rutas Reiki.",
+    "mission": "«Filtraciones» — Investiga por qué el 3% de la población reporta sueños idénticos cada solsticio.",
+    "access": "Ciudadano verificado"
+  },
+  {
+    "id": "atlantis-atlantico",
+    "cat": "nucleo",
+    "x": 55.1,
+    "y": 42.6,
+    "name": "Atlantis-Soberanía II (Atlántico)",
+    "img": "assets/Atlantis4.png",
+	"sub": "Enclave oceánico — 500M habitantes",
+    "stats": {
+      "Tipo": "Metrópoli sumergida",
+      "Población": "500.000.000",
+      "Peligro": "Bajo",
+      "Facción": "Consejo del Atlántico"
+    },
+    "desc": "Gemela y rival administrativa de la Soberanía del Pacífico. Alberga los archivos de la Encronización Consciente Total.",
+    "mission": "«Copia de seguridad» — Recupera un fragmento de archivo consciente corrompido antes de que expire su ventana.",
+    "access": "Ciudadano verificado"
+  },
+  {
+    "id": "sagitario-a",
+    "cat": "control",
+    "x": 61.8,
+    "y": 37.2,
+    "name": "Sagitario A*",
+    "img": "https://es.gizmodo.com/app/uploads/2025/01/Diseno-sin-titulo-8-25.jpg",
+	"sub": "Corazón gravitacional custodiado",
+    "stats": {
+      "Tipo": "Agujero negro supermasivo",
+      "Función": "Ancla gravitacional",
+      "Peligro": "Extremo",
+      "Custodia": "Flota Kronos"
+    },
+    "desc": "Pozo gravitacional que ancla la red de branas al espacio ordinario. Acceso solo con escolta militar.",
+    "mission": "«El Borde del Silencio» — Desactiva una anomalía de disco de acreción antes de que desestabilice tres branas.",
+    "access": "Comando militar"
+  },
+  {
+    "id": "kronos-titan",
+    "cat": "control",
+    "x": 62.2,
+    "y": 41.8,
+    "name": "Kronos-Titán SC1 [v4.0]",
+    "img": "assets/KRONOS-TITAN SC1.png",
+	"sub": "Megameca de combate — 1.2 km",
+    "stats": {
+      "Tipo": "Plataforma de guerra",
+      "Longitud": "1.200 m",
+      "Peligro": "Extremo",
+      "Versión": "v4.0"
+    },
+    "desc": "La megaestructura de defensa más grande de la carta, apostada junto a Sagitario A* para contener incursiones.",
+    "mission": "«Protocolo Titán» — Únete a la tripulación por un ciclo de guardia y repele una incursión Phantom-X2.",
+    "access": "Comando militar"
+  },
+  {
+    "id": "traza-reiki",
+    "cat": "control",
+    "x": 69.5,
+    "y": 52,
+    "name": "Traza Reiki-01",
+    "img": "https://images.stockcake.com/public/2/d/e/2de8c992-9664-410d-a425-a5e446b9ea62_medium/divine-chakra-light-stockcake.jpg",
+	"sub": "Ruta de luz consciente",
+    "stats": {
+      "Tipo": "Corredor de navegación",
+      "Función": "Travesía trans-multiversal",
+      "Peligro": "Variable",
+      "Estado": "Activa"
+    },
+    "desc": "Única ruta certificada para cruzar de brana en brana sin descoherencia consciente.",
+    "mission": "«Fuera de Traza» — Un carguero se ha desviado de la ruta; localízalo antes de que entre en Brana XX.",
+    "access": "Piloto certificado"
+  },
+  {
+    "id": "ton618",
+    "cat": "agujero",
+    "x": 26.6,
+    "y": 16.9,
+    "name": "TON 618",
+    "img": "https://www.ecoticias.com/hoyeco/wp-content/uploads/2025/04/aguj_id-3-1.jpg",
+	"sub": "Agujero negro — Energía Merkaba",
+    "stats": {
+      "Tipo": "Agujero negro ultramasivo",
+      "Rol": "Nodo energético",
+      "Peligro": "Alto",
+      "Red": "Merkaba 4.0"
+    },
+    "desc": "Coloso gravitacional integrado a la Red Merkaba, generador de potencia para el sector noroeste.",
+    "mission": "«Cosecha de horizonte» — Estabiliza el nodo Merkaba durante una tormenta de flujo energético.",
+    "access": "Ingeniero de campo"
+  },
+  {
+    "id": "gaiabh1",
+    "cat": "agujero",
+    "x": 73,
+    "y": 16.9,
+    "name": "Gaia BH1",
+    "img": "https://images.news18.com/ibnlive/uploads/2022/11/blackhole.png",
+	"sub": "Agujero negro — Energía Merkaba",
+    "stats": {
+      "Tipo": "Agujero negro estelar",
+      "Rol": "Nodo energético",
+      "Peligro": "Alto",
+      "Red": "Merkaba 4.0"
+    },
+    "desc": "El más cercano a Tierra-Edén, concentra el mayor tráfico de mantenimiento de la red Merkaba.",
+    "mission": "«Vecino cercano» — Escolta a un equipo de mantenimiento hasta el horizonte de Gaia BH1.",
+    "access": "Ingeniero de campo"
+  },
+  {
+    "id": "phoenixa",
+    "cat": "agujero",
+    "x": 19.7,
+    "y": 26.5,
+    "name": "Phoenix A*",
+    "img": "https://live.staticflickr.com/65535/53529742793_ed0b71fac8_b.jpg",
+	"sub": "Agujero negro — Energía Merkaba",
+    "stats": {
+      "Tipo": "Agujero negro supermasivo",
+      "Rol": "Nodo energético",
+      "Peligro": "Alto",
+      "Red": "Merkaba 4.0"
+    },
+    "desc": "Alimenta el flanco occidental de la carta, cerca de la frontera con la Brana XIV.",
+    "mission": "«Cenizas y luz» — Investiga un patrón de apagones cíclicos en el nodo.",
+    "access": "Ingeniero de campo"
+  },
+  {
+    "id": "nemesis-prime",
+    "cat": "agujero",
+    "x": 79,
+    "y": 27,
+    "name": "Némesis Prime",
+    "img": "https://s1.abcstatics.com/media/ciencia/2017/06/17/6594.adapt.1190.1-kDh--620x349@abc.jpg",
+	"sub": "Agujero negro — Energía Merkaba",
+    "stats": {
+      "Tipo": "Agujero negro supermasivo",
+      "Rol": "Nodo energético",
+      "Peligro": "Muy alto",
+      "Red": "Merkaba 4.0"
+    },
+    "desc": "El nodo con más incidentes registrados de desincronización de flota en toda la carta.",
+    "mission": "«Némesis» — Rastrea la nave desaparecida en el último incidente de desincronización.",
+    "access": "Comando militar"
+  },
+  {
+    "id": "m87",
+    "cat": "agujero",
+    "x": 13.3,
+    "y": 37.8,
+    "name": "M87*",
+    "img": "https://s1.abcstatics.com/media/ciencia/2019/12/19/EHT-NSF-accretiondisk-topdown-logo-kXqH--1248x698@abc.jpg",
+	"sub": "Agujero negro — Energía Merkaba",
+    "stats": {
+      "Tipo": "Agujero negro supermasivo",
+      "Rol": "Nodo energético / frontera",
+      "Peligro": "Alto",
+      "Red": "Merkaba 4.0"
+    },
+    "desc": "El más occidental del sector, piedra angular simbólica de toda expansión del Imperio.",
+    "mission": "«Primera Luz» — Recupera los registros históricos antes de que Phantom-X2 los reclame.",
+    "access": "Historiador de campo"
+  },
+  {
+    "id": "lqg001",
+    "cat": "agujero",
+    "x": 83.5,
+    "y": 37.8,
+    "name": "LQG 001",
+    "img": "https://universemap.net/wp-content/uploads/2025/05/huge-lqg-largest-quasar-group-structure-universe.jpg",
+	"sub": "Cuásar supermasiva",
+    "stats": {
+      "Tipo": "Cuásar",
+      "Rol": "Baliza de frontera",
+      "Peligro": "Alto",
+      "Zona": "Capas de frontera"
+    },
+    "desc": "Marca el límite oriental seguro de navegación antes de las capas de frontera (Branas XVI-XX).",
+    "mission": "«Baliza LQG» — Recalibra la señal para mantener sincronizada la flota de frontera.",
+    "access": "Piloto certificado"
+  },
+  {
+    "id": "cygnusx1",
+    "cat": "agujero",
+    "x": 82.5,
+    "y": 53,
+    "name": "Cygnus X-1",
+    "img": "https://cdn.britannica.com/58/181858-050-44CDC017/conception-Artist-Cygnus-X-1-black-hole-companion.jpg",
+	"sub": "Agujero negro — Energía Merkaba",
+    "stats": {
+      "Tipo": "Agujero negro estelar",
+      "Rol": "Nodo energético",
+      "Peligro": "Alto",
+      "Red": "Merkaba 4.0"
+    },
+    "desc": "Primer candidato a agujero negro confirmado por la civilización de origen, hoy nodo Merkaba oriental.",
+    "mission": "«Apuesta de Cygnus» — Media en una disputa entre dos escuadras por el control del nodo.",
+    "access": "Ingeniero de campo"
+  },
+  {
+    "id": "psr-j0952",
+    "cat": "pulsar",
+    "x": 10.4,
+    "y": 53,
+    "name": "PSR J0952-0607",
+    "img": "https://images.jpost.com/image/upload/f_auto,fl_lossy/q_auto/c_fill,g_faces:center,h_720,w_1280/511428",
+	"sub": "Púlsar — Energía Merkaba",
+    "stats": {
+      "Tipo": "Púlsar de milisegundos",
+      "Rol": "Nodo energético",
+      "Peligro": "Medio",
+      "Red": "Merkaba 4.0"
+    },
+    "desc": "Uno de los púlsares más veloces catalogados, metrónomo de sincronización occidental.",
+    "mission": "«El Metrónomo» — Corrige una deriva de sincronización antes de que afecte la Traza Reiki-01.",
+    "access": "Ingeniero de campo"
+  },
+  {
+    "id": "psr-j1748",
+    "cat": "pulsar",
+    "x": 19.2,
+    "y": 68.8,
+    "name": "PSR J1748-2446AD",
+	"img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsEJYPezIXFurr_u7Uy5dvn2qChwlqB3DloitKsythrg099xiNf-Bbx_M&s=10",
+    "sub": "Púlsar — Energía Merkaba",
+    "stats": {
+      "Tipo": "Púlsar de milisegundos",
+      "Rol": "Nodo energético",
+      "Peligro": "Medio",
+      "Red": "Merkaba 4.0"
+    },
+    "desc": "Regula parte de la telemetría de los 86 Mundos del Gran Vacío de Bootes.",
+    "mission": "«Pulso de Bootes» — Repara la antena de telemetría dañada por una tormenta de radiación.",
+    "access": "Ingeniero de campo"
+  },
+  {
+    "id": "vycanis",
+    "cat": "estrella",
+    "x": 74.5,
+    "y": 69.3,
+    "name": "VY Canis Majoris",
+   	"img": "https://astrophotographylens.com/cdn/shop/articles/vy_canis_majoris_9b51f0a1-bbed-4ea2-b751-844eff79398a.jpg?v=1708624526",
+	"sub": "Hipergigante roja",
+    "stats": {
+      "Tipo": "Hipergigante roja",
+      "Rol": "Faro de navegación",
+      "Peligro": "Medio",
+      "Zona": "Sector sureste"
+    },
+    "desc": "Una de las estrellas más grandes catalogadas, faro de orientación hacia el Gran Vacío de Bootes.",
+    "mission": "«El Faro Rojo» — Documenta las pulsaciones de brillo para el archivo estelar del Imperio.",
+    "access": "Ciudadano verificado"
+  },
+  {
+    "id": "sombra-metrica",
+    "cat": "region",
+    "x": 50,
+    "y": 25.5,
+    "name": "114 Mundos de Sombra Métrica",
+	"img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNgMfpJdJXW-D6zU20IjJcLihcAQh9deSZQoPYw9QWK-9QLe7bj-Y70TE&s=10",
+	"sub": "4.19 billones de habitantes",
+    "stats": {
+      "Tipo": "Cinturón de mundos",
+      "Población": "4,19 billones",
+      "Rango": "SOM-01→114",
+      "Peligro": "Bajo-medio"
+    },
+    "desc": "Cinturón de 114 mundos en geometría de sombra métrica. La mayor concentración fuera de Tierra-Edén.",
+    "mission": "«Censo de Sombra» — Verifica los registros conscientes en tres mundos SOM al azar.",
+    "access": "Ciudadano verificado"
+  },
+  {
+    "id": "bootes",
+    "cat": "region",
+    "x": 50,
+    "y": 62.6,
+    "name": "86 Mundos del Gran Vacío de Bootes",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSH4nO2-mPAwXybuo8Gf6cdeaBEcVCwcDqEm0p93tFtxT2xH2EPp57cany&s=10",
+	"sub": "3.44 billones de habitantes",
+    "stats": {
+      "Tipo": "Cinturón de mundos",
+      "Población": "3,44 billones",
+      "Rango": "BVS-01→06+",
+      "Peligro": "Bajo-medio"
+    },
+    "desc": "Segundo gran cinturón habitado, asentado sobre el vacío estructural de Bootes.",
+    "mission": "«Eco en el Vacío» — Investiga una señal no catalogada en un sector despoblado.",
+    "access": "Ciudadano verificado"
+  },
+  {
+    "id": "merkaba",
+    "cat": "red",
+    "x": 29.5,
+    "y": 85,
+    "name": "Red Suprema Merkaba 4.0",
+    "img": "assets/Merkaba-Pulsar.png",
+	  "sub": "37 nodos estelares diedro-tetraédricos",
+    "stats": {
+      "Tipo": "Red energética",
+      "Nodos": "37",
+      "Potencia": "3,19×10⁴⁵ W",
+      "Peligro": "Restringido"
+    },
+    "desc": "Columna vertebral energética del Imperio: 37 nodos tetraédricos que canalizan la potencia de agujeros negros y púlsares.",
+    "mission": "«Guardianes de la Red» — Ronda de mantenimiento en tres nodos simultáneos.",
+    "access": "Ingeniero certificado Merkaba"
+  }
+]

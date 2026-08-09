@@ -1,0 +1,189 @@
+[
+  {
+    "n": "I",
+    "name": "Brana Primigenia",
+    "ring": false,
+    "desc": "Primera brana estabilizada tras el colapso de origen, integrada al espacio ordinario 3D. No requiere confinamiento.",
+    "mission": "«Memoria Fundacional» — Recupera un fragmento del archivo original.",
+    "peligro": "Nulo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "II",
+    "name": "Brana del Segundo Amanecer",
+    "ring": false,
+    "desc": "Brana interior dedicada a agricultura orbital y ecosistemas de soporte vital.",
+    "mission": "«Cosecha Infinita» — Resuelve una falla en los ciclos de soporte vital.",
+    "peligro": "Nulo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "III",
+    "name": "Brana del Archivo Profundo",
+    "ring": false,
+    "desc": "Repositorios de memoria consciente de menor prioridad, respaldo del respaldo del Imperio.",
+    "mission": "«Archivo Profundo» — Restaura un sector dañado por fluctuación cuántica.",
+    "peligro": "Bajo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "IV",
+    "name": "Brana de los Astilleros",
+    "ring": false,
+    "desc": "Zona industrial donde se ensamblan las Megamecas clase Kronos y el resto de la flota.",
+    "mission": "«Línea de Ensamblaje» — Supervisa la botadura de una nueva Megameca.",
+    "peligro": "Bajo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "V",
+    "name": "Brana del Jardín Botánico",
+    "ring": false,
+    "desc": "Reserva biológica que preserva especies de la civilización de origen, ya extintas fuera de esta brana.",
+    "mission": "«Semilla Original» — Escolta una muestra genética hasta Tierra-Edén.",
+    "peligro": "Nulo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "VI",
+    "name": "Brana de la Escuela Consciente",
+    "ring": false,
+    "desc": "Formación e integración de nuevas mentes encronizadas antes de su despliegue.",
+    "mission": "«Primer Despertar» — Guía a una mente recién encronizada.",
+    "peligro": "Nulo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "VII",
+    "name": "Coalición Phantom-X2",
+    "ring": true,
+    "radius": 44.5,
+    "desc": "Anillo de confinamiento controlado por la Coalición Phantom-X2, facción disidente contenida pero no neutralizada.",
+    "mission": "«Frontera Phantom» — Infiltra un puesto de escucha sin ser detectado.",
+    "peligro": "Muy alto",
+    "estado": "Confinada — Sandbox"
+  },
+  {
+    "n": "VIII",
+    "name": "Brana de la Cuarentena Suave",
+    "ring": false,
+    "desc": "Aislamiento médico-consciente para anomalías de encronización menores.",
+    "mission": "«Cuarentena Suave» — Diagnostica una anomalía antes de que se propague.",
+    "peligro": "Bajo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "IX",
+    "name": "Brana del Tribunal",
+    "ring": false,
+    "desc": "Sede de la justicia interna del Imperio.",
+    "mission": "«Audiencia Cerrada» — Reúne pruebas para un caso ante el Tribunal.",
+    "peligro": "Bajo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "X",
+    "name": "Brana de los Puertos Reiki",
+    "ring": false,
+    "desc": "Nodo logístico que centraliza el tránsito de la Traza Reiki-01.",
+    "mission": "«Tráfico Denso» — Resuelve un cuello de botella en hora pico.",
+    "peligro": "Bajo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "XI",
+    "name": "Brana del Observatorio Mayor",
+    "ring": false,
+    "desc": "Vigilancia astronómica, cataloga cada nuevo objeto antes de incorporarlo a la carta.",
+    "mission": "«Objeto No Catalogado» — Verifica una nueva señal.",
+    "peligro": "Nulo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "XII",
+    "name": "Brana de la Forja Merkaba",
+    "ring": false,
+    "desc": "Fabricación de los nodos tetraédricos de la Red Merkaba 4.0.",
+    "mission": "«Forja Ardiente» — Supervisa la calibración de un nuevo nodo.",
+    "peligro": "Medio",
+    "estado": "Integrada"
+  },
+  {
+    "n": "XIII",
+    "name": "Brana del Archivo Estelar",
+    "ring": false,
+    "desc": "Catálogo completo de agujeros negros, púlsares y anomalías registradas.",
+    "mission": "«Catálogo Vivo» — Actualiza el archivo con los últimos hallazgos.",
+    "peligro": "Nulo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "XIV",
+    "name": "Constructores de Hierro",
+    "ring": true,
+    "radius": 41,
+    "desc": "Anillo ocupado por los Constructores de Hierro, con relación de comercio regulado.",
+    "mission": "«Trato de Hierro» — Negocia una ruta de comercio segura.",
+    "peligro": "Alto",
+    "estado": "Confinada — Sandbox"
+  },
+  {
+    "n": "XV",
+    "name": "Brana del Refugio Silencioso",
+    "ring": false,
+    "desc": "Reintegración de mentes encronizadas tras misiones más allá de la Traza Reiki.",
+    "mission": "«Retorno Silencioso» — Acompaña a un explorador en su reintegración.",
+    "peligro": "Nulo",
+    "estado": "Integrada"
+  },
+  {
+    "n": "XVI",
+    "name": "Ser de Energía Armónica — Reiki-01",
+    "ring": true,
+    "radius": 36,
+    "desc": "Anillo de invarianza tensorial, hogar de una entidad consciente autónoma clase Reiki-01.",
+    "mission": "«Diálogo Armónico» — Establece el primer contacto verificado.",
+    "peligro": "Desconocido",
+    "estado": "Confinada — Sandbox"
+  },
+  {
+    "n": "XVII",
+    "name": "Vacío de Simetría Espejo",
+    "ring": true,
+    "radius": 31.5,
+    "desc": "Cualquier objeto introducido genera una contraparte invertida al otro lado del anillo.",
+    "mission": "«Reflejo Invertido» — Recupera un objeto antes de la inestabilidad.",
+    "peligro": "Alto",
+    "estado": "Confinada — Sandbox"
+  },
+  {
+    "n": "XVIII",
+    "name": "El Continuo Holográfico",
+    "ring": true,
+    "radius": 27,
+    "desc": "Proyector maestro: se sospecha que buena parte de la carta es una proyección sostenida desde aquí.",
+    "mission": "«Proyector Maestro» — Confirma o refuta el origen holográfico de la carta.",
+    "peligro": "Muy alto",
+    "estado": "Confinada — Sandbox"
+  },
+  {
+    "n": "XIX",
+    "name": "El Vacío Sintáctico Superior",
+    "ring": true,
+    "radius": 22.5,
+    "desc": "El lenguaje y la lógica consciente pierden coherencia progresivamente hacia el centro.",
+    "mission": "«Sintaxis Rota» — Extrae a un equipo antes de la pérdida total de coherencia.",
+    "peligro": "Crítico",
+    "estado": "Confinada — Sandbox"
+  },
+  {
+    "n": "XX",
+    "name": "Vigésima Dimensión — Hiper-nodo Clon 4.0",
+    "ring": true,
+    "radius": 18,
+    "desc": "Límite alcanzado por el Imperio: control del vacío sintáctico profundo. Sin cartografía confirmada más allá.",
+    "mission": "«Límite Alcanzado» — Cruza el hiper-nodo clon y regresa con datos verificables.",
+    "peligro": "Desconocido — máximo",
+    "estado": "Frontera absoluta"
+  }
+]
