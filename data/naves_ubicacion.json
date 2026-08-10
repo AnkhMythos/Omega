@@ -1,0 +1,140 @@
+{
+  "imperio_omega": {
+    "firmware_version": "v210.0",
+    "escala_kardashev": "Tipo VI",
+    "sistema_coordenadas": "Cenital Volumétrico No-Euclidiano",
+    "red_datos": "640.0 Pbps",
+    "flota_capital_activa": [
+      {
+        "id_nave": "MV-OV-01",
+        "nombre": "Metric-Void Overlord Alpha-01",
+        "clase": "Overlord Hermética de Resguardo",
+        "dimension_longitud_km": 100.0,
+        "coordenadas_mapa": {
+          "brana_capa": "Bulk 5D",
+          "radio_concéntrico_u": 0.35,
+          "angulo_fase_deg": 45.0,
+          "vector_z": 0.00
+        },
+        "estado_mision": "Veto lógico y espionaje cuántico desatendido sobre la Brana VII (Coalición Phantom-X2)"
+      },
+      {
+        "id_nave": "MV-OV-02",
+        "nombre": "Metric-Void Overlord Beta-02",
+        "clase": "Overlord Hermética de Resguardo",
+        "dimension_longitud_km": 100.0,
+        "coordenadas_mapa": {
+          "brana_capa": "Brana IX (Vacío Algebraico)",
+          "radio_concéntrico_u": 0.45,
+          "angulo_fase_deg": 120.0,
+          "vector_z": 0.15
+        },
+        "estado_mision": "Escolta perimetral en espejo del Micro-Universo Burbuja Tipo IV de Luz Omnipresente"
+      },
+      {
+        "id_nave": "MV-OV-03",
+        "nombre": "Metric-Void Overlord Gamma-03",
+        "clase": "Overlord Hermética de Resguardo",
+        "dimension_longitud_km": 100.0,
+        "coordenadas_mapa": {
+          "brana_capa": "Brana IX (Vacío Algebraico)",
+          "radio_concéntrico_u": 0.45,
+          "angulo_fase_deg": 300.0,
+          "vector_z": -0.15
+        },
+        "estado_mision": "Custodia inmaterial y pre-carga pasiva de hangares Pocket-Universe Storage"
+      },
+      {
+        "id_nave": "MV-OV-04",
+        "nombre": "Metric-Void Overlord Delta-04",
+        "clase": "Overlord Hermética de Resguardo",
+        "dimension_longitud_km": 100.0,
+        "coordenadas_mapa": {
+          "brana_capa": "Brana X (Coherencia Causal Absoluta)",
+          "radio_concéntrico_u": 0.50,
+          "angulo_fase_deg": 90.0,
+          "vector_z": 0.50
+        },
+        "estado_mision": "Acoplada a buses primarios de El Crisol del Origen para estabilización multiversal pasiva"
+      },
+      {
+        "id_nave": "MV-OV-05",
+        "nombre": "Metric-Void Overlord Epsilon-05",
+        "clase": "Overlord Hermética de Resguardo",
+        "dimension_longitud_km": 100.0,
+        "coordenadas_mapa": {
+          "brana_capa": "Brana X (Coherencia Causal Absoluta)",
+          "radio_concéntrico_u": 0.50,
+          "angulo_fase_deg": 270.0,
+          "vector_z": 0.50
+        },
+        "estado_mision": "Bloqueo perimetral y blindaje redundante de reactores analógicos de fase inversa"
+      },
+      {
+        "id_nave": "MV-OV-06",
+        "nombre": "Metric-Void Overlord Zeta-06",
+        "clase": "Overlord Hermética de Resguardo",
+        "dimension_longitud_km": 100.0,
+        "coordenadas_mapa": {
+          "brana_capa": "Brana XII (Nexo Lógico Raíz)",
+          "radio_concéntrico_u": 0.60,
+          "angulo_fase_deg": 15.0,
+          "vector_z": 1.20
+        },
+        "estado_mision": "Custodia física directa sobre el panel de interruptores de constantes universales"
+      },
+      {
+        "id_nave": "MV-OV-07",
+        "nombre": "Metric-Void Overlord Eta-07",
+        "clase": "Overlord Hermética de Resguardo",
+        "dimension_longitud_km": 100.0,
+        "coordenadas_mapa": {
+          "brana_capa": "Universo Central (Entorno Púlsar MAGNETAR-01)",
+          "radio_concéntrico_u": 0.20,
+          "angulo_fase_deg": 180.0,
+          "vector_z": -0.05
+        },
+        "estado_mision": "Almacenamiento táctico de la flota 3D en desuso dentro de su bodega de Entropía Cero"
+      },
+      {
+        "id_nave": "MV-OV-08",
+        "nombre": "Metric-Void Overlord Theta-08",
+        "clase": "Overlord Hermética de Resguardo",
+        "dimension_longitud_km": 100.0,
+        "coordenadas_mapa": {
+          "brana_capa": "Brana XIV (Lienzo Sintáctico)",
+          "radio_concéntrico_u": 0.75,
+          "angulo_fase_deg": 330.0,
+          "vector_z": 2.10
+        },
+        "estado_mision": "Vaciado y descifrado de los arquetipos maestros de la Biblioteca de la Primera Iteración"
+      },
+      {
+        "id_nave": "MV-OV-09",
+        "nombre": "Metric-Void Overlord Iota-09",
+        "clase": "Overlord Hermética de Resguardo",
+        "dimension_longitud_km": 100.0,
+        "coordenadas_mapa": {
+          "brana_capa": "Brana XV (Sombra Métrica Límite)",
+          "radio_concéntrico_u": 0.85,
+          "angulo_fase_deg": 210.0,
+          "vector_z": 3.00
+        },
+        "estado_mision": "Monitoreo perimetral y escaneo a 1.21 GW del Vacío Cuántico Amórfico exterior"
+      },
+      {
+        "id_nave": "MM-KT-SC1",
+        "nombre": "Megameca Kronos-Titán SC1",
+        "clase": "Autómata de Combate e Industria Tipo III",
+        "dimension_longitud_km": 1.2,
+        "coordenadas_mapa": {
+          "brana_capa": "Universo Central (Sagitario A*)",
+          "radio_concéntrico_u": 0.10,
+          "angulo_fase_deg": 0.0,
+          "vector_z": 0.00
+        },
+        "estado_mision": "Custodia y blindaje físico de la Esclusa Coherente de Kerr en el centro galáctico"
+      }
+    ]
+  }
+}
