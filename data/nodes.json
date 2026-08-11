@@ -5,8 +5,8 @@
     "x": 50,
     "y": 44.3,
     "name": "Tierra-Edén",
-	"img": "https://oem.com.mx/elsoldemexico/img/15490375/1655457164/BASE_LANDSCAPE/1200/image.webp",
-	"sub": "Núcleo Central Unificado",
+    "img": "https://oem.com.mx/elsoldemexico/img/15490375/1655457164/BASE_LANDSCAPE/1200/image.webp",
+    "sub": "Núcleo Central Unificado",
     "stats": {
       "Tipo": "Planeta capital",
       "Coordenada": "0,0 · Bulk 5D",
@@ -24,7 +24,7 @@
     "y": 45.3,
     "name": "Atlantis-Soberanía (Pacífico)",
     "img": "assets/Atlantis3.png",
-	"sub": "Enclave oceánico — 300M habitantes",
+    "sub": "Enclave oceánico — 300M habitantes",
     "stats": {
       "Tipo": "Metrópoli sumergida",
       "Población": "300.000.000",
@@ -42,7 +42,7 @@
     "y": 42.6,
     "name": "Atlantis-Soberanía II (Atlántico)",
     "img": "assets/Atlantis4.png",
-	"sub": "Enclave oceánico — 500M habitantes",
+    "sub": "Enclave oceánico — 500M habitantes",
     "stats": {
       "Tipo": "Metrópoli sumergida",
       "Población": "500.000.000",
@@ -60,7 +60,7 @@
     "y": 37.2,
     "name": "Sagitario A*",
     "img": "https://es.gizmodo.com/app/uploads/2025/01/Diseno-sin-titulo-8-25.jpg",
-	"sub": "Corazón gravitacional custodiado",
+    "sub": "Corazón gravitacional custodiado",
     "stats": {
       "Tipo": "Agujero negro supermasivo",
       "Función": "Ancla gravitacional",
@@ -73,12 +73,12 @@
   },
   {
     "id": "kronos-titan",
-    "cat": "control",
+    "cat": "nave",
     "x": 62.2,
     "y": 41.8,
     "name": "Kronos-Titán SC1 [v4.0]",
     "img": "assets/KRONOS-TITAN SC1.png",
-	"sub": "Megameca de combate — 1.2 km",
+    "sub": "Megameca de combate — 1.2 km",
     "stats": {
       "Tipo": "Plataforma de guerra",
       "Longitud": "1.200 m",
@@ -96,7 +96,7 @@
     "y": 52,
     "name": "Traza Reiki-01",
     "img": "https://images.stockcake.com/public/2/d/e/2de8c992-9664-410d-a425-a5e446b9ea62_medium/divine-chakra-light-stockcake.jpg",
-	"sub": "Ruta de luz consciente",
+    "sub": "Ruta de luz consciente",
     "stats": {
       "Tipo": "Corredor de navegación",
       "Función": "Travesía trans-multiversal",
@@ -114,7 +114,7 @@
     "y": 16.9,
     "name": "TON 618",
     "img": "https://www.ecoticias.com/hoyeco/wp-content/uploads/2025/04/aguj_id-3-1.jpg",
-	"sub": "Agujero negro — Energía Merkaba",
+    "sub": "Agujero negro — Energía Merkaba",
     "stats": {
       "Tipo": "Agujero negro ultramasivo",
       "Rol": "Nodo energético",
@@ -132,7 +132,7 @@
     "y": 16.9,
     "name": "Gaia BH1",
     "img": "https://images.news18.com/ibnlive/uploads/2022/11/blackhole.png",
-	"sub": "Agujero negro — Energía Merkaba",
+    "sub": "Agujero negro — Energía Merkaba",
     "stats": {
       "Tipo": "Agujero negro estelar",
       "Rol": "Nodo energético",
@@ -150,7 +150,7 @@
     "y": 26.5,
     "name": "Phoenix A*",
     "img": "https://live.staticflickr.com/65535/53529742793_ed0b71fac8_b.jpg",
-	"sub": "Agujero negro — Energía Merkaba",
+    "sub": "Agujero negro — Energía Merkaba",
     "stats": {
       "Tipo": "Agujero negro supermasivo",
       "Rol": "Nodo energético",
@@ -168,7 +168,7 @@
     "y": 27,
     "name": "Némesis Prime",
     "img": "https://s1.abcstatics.com/media/ciencia/2017/06/17/6594.adapt.1190.1-kDh--620x349@abc.jpg",
-	"sub": "Agujero negro — Energía Merkaba",
+    "sub": "Agujero negro — Energía Merkaba",
     "stats": {
       "Tipo": "Agujero negro supermasivo",
       "Rol": "Nodo energético",
@@ -186,7 +186,7 @@
     "y": 37.8,
     "name": "M87*",
     "img": "https://s1.abcstatics.com/media/ciencia/2019/12/19/EHT-NSF-accretiondisk-topdown-logo-kXqH--1248x698@abc.jpg",
-	"sub": "Agujero negro — Energía Merkaba",
+    "sub": "Agujero negro — Energía Merkaba",
     "stats": {
       "Tipo": "Agujero negro supermasivo",
       "Rol": "Nodo energético / frontera",
@@ -204,7 +204,7 @@
     "y": 37.8,
     "name": "LQG 001",
     "img": "https://universemap.net/wp-content/uploads/2025/05/huge-lqg-largest-quasar-group-structure-universe.jpg",
-	"sub": "Cuásar supermasiva",
+    "sub": "Cuásar supermasiva",
     "stats": {
       "Tipo": "Cuásar",
       "Rol": "Baliza de frontera",
@@ -222,7 +222,7 @@
     "y": 53,
     "name": "Cygnus X-1",
     "img": "https://cdn.britannica.com/58/181858-050-44CDC017/conception-Artist-Cygnus-X-1-black-hole-companion.jpg",
-	"sub": "Agujero negro — Energía Merkaba",
+    "sub": "Agujero negro — Energía Merkaba",
     "stats": {
       "Tipo": "Agujero negro estelar",
       "Rol": "Nodo energético",
@@ -240,7 +240,7 @@
     "y": 53,
     "name": "PSR J0952-0607",
     "img": "https://images.jpost.com/image/upload/f_auto,fl_lossy/q_auto/c_fill,g_faces:center,h_720,w_1280/511428",
-	"sub": "Púlsar — Energía Merkaba",
+    "sub": "Púlsar — Energía Merkaba",
     "stats": {
       "Tipo": "Púlsar de milisegundos",
       "Rol": "Nodo energético",
@@ -257,7 +257,7 @@
     "x": 19.2,
     "y": 68.8,
     "name": "PSR J1748-2446AD",
-	"img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsEJYPezIXFurr_u7Uy5dvn2qChwlqB3DloitKsythrg099xiNf-Bbx_M&s=10",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsEJYPezIXFurr_u7Uy5dvn2qChwlqB3DloitKsythrg099xiNf-Bbx_M&s=10",
     "sub": "Púlsar — Energía Merkaba",
     "stats": {
       "Tipo": "Púlsar de milisegundos",
@@ -275,8 +275,8 @@
     "x": 74.5,
     "y": 69.3,
     "name": "VY Canis Majoris",
-   	"img": "https://astrophotographylens.com/cdn/shop/articles/vy_canis_majoris_9b51f0a1-bbed-4ea2-b751-844eff79398a.jpg?v=1708624526",
-	"sub": "Hipergigante roja",
+    "img": "https://astrophotographylens.com/cdn/shop/articles/vy_canis_majoris_9b51f0a1-bbed-4ea2-b751-844eff79398a.jpg?v=1708624526",
+    "sub": "Hipergigante roja",
     "stats": {
       "Tipo": "Hipergigante roja",
       "Rol": "Faro de navegación",
@@ -293,8 +293,8 @@
     "x": 50,
     "y": 25.5,
     "name": "114 Mundos de Sombra Métrica",
-	"img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNgMfpJdJXW-D6zU20IjJcLihcAQh9deSZQoPYw9QWK-9QLe7bj-Y70TE&s=10",
-	"sub": "4.19 billones de habitantes",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNgMfpJdJXW-D6zU20IjJcLihcAQh9deSZQoPYw9QWK-9QLe7bj-Y70TE&s=10",
+    "sub": "4.19 billones de habitantes",
     "stats": {
       "Tipo": "Cinturón de mundos",
       "Población": "4,19 billones",
@@ -312,7 +312,7 @@
     "y": 62.6,
     "name": "86 Mundos del Gran Vacío de Bootes",
     "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSH4nO2-mPAwXybuo8Gf6cdeaBEcVCwcDqEm0p93tFtxT2xH2EPp57cany&s=10",
-	"sub": "3.44 billones de habitantes",
+    "sub": "3.44 billones de habitantes",
     "stats": {
       "Tipo": "Cinturón de mundos",
       "Población": "3,44 billones",
@@ -330,7 +330,7 @@
     "y": 85,
     "name": "Red Suprema Merkaba 4.0",
     "img": "assets/Merkaba-Pulsar.png",
-	  "sub": "37 nodos estelares diedro-tetraédricos",
+    "sub": "37 nodos estelares diedro-tetraédricos",
     "stats": {
       "Tipo": "Red energética",
       "Nodos": "37",
@@ -340,5 +340,311 @@
     "desc": "Columna vertebral energética del Imperio: 37 nodos tetraédricos que canalizan la potencia de agujeros negros y púlsares.",
     "mission": "«Guardianes de la Red» — Ronda de mantenimiento en tres nodos simultáneos.",
     "access": "Ingeniero certificado Merkaba"
+  },
+  {
+    "id": "pobos-1.5km",
+    "cat": "nave",
+    "x": 29.5,
+    "y": 50,
+    "name": "Destructor-Phobos 1.5km",
+    "img": "assets/destructor-phobos-1.5km.png",
+    "sub": "37 destructores estelares",
+    "stats": {
+      "Tipo": "nave",
+      "Nodos": "37",
+      "Potencia": "3,19×10⁴⁵ W",
+      "Peligro": "Restringido"
+    },
+    "desc": "Asalto pesado en el Bulk 5D, patrulla de perímetros de exclusión y supresión de firmas métricas hostiles mediante reactores ARC de estado sólido.",
+    "mission": "«Guardianes de la Red» — Ronda de mantenimiento en tres nodos simultáneos.",
+    "access": "Ingeniero certificado Merkaba"
+  },
+  {
+    "id": "overlord-100km-01",
+    "cat": "nave",
+    "x": 35.0,
+    "y": 45.0,
+    "name": "Metric-Void Overlord Alpha-01",
+    "img": "assets/metric-void-overlord-100km.png",
+    "sub": "9 fortalezas herméticas de 100km",
+    "stats": {
+      "Tipo": "Fortaleza Hermética",
+      "Nodos": "1 (Bulk 5D)",
+      "Potencia": "9,42×10⁴² W",
+      "Peligro": "Nulo Absoluto"
+    },
+    "desc": "Chasis inmaterial hermético de escala planetaria con geometría no-euclidiana faceteada. Blindaje de aleación de Titanio-52 anómalo auto-reparable y paneles densos de carbono-grafeno molecular negro mate.",
+    "mission": "Veto lógico y espionaje cuántico desatendido sobre la Brana VII (Coalición Phantom-X2).",
+    "access": "Director Inmortal / Firma Nivel 9"
+  },
+  {
+    "id": "overlord-100km-02",
+    "cat": "nave",
+    "x": 45.0,
+    "y": 12.0,
+    "name": "Metric-Void Overlord Beta-02",
+    "img": "assets/metric-void-overlord-100km.png",
+    "sub": "9 fortalezas herméticas de 100km",
+    "stats": {
+      "Tipo": "Fortaleza Hermética",
+      "Nodos": "2 (Brana IX)",
+      "Potencia": "9,42×10⁴² W",
+      "Peligro": "Nulo Absoluto"
+    },
+    "desc": "Chasis inmaterial hermético de escala planetaria con geometría no-euclidiana faceteada. Blindaje de aleación de Titanio-52 anómalo auto-reparable y paneles densos de carbono-grafeno molecular negro mate.",
+    "mission": "Escolta perimetral en espejo del Micro-Universo Burbuja Tipo IV de Luz Omnipresente.",
+    "access": "Director Inmortal / Firma Nivel 9"
+  },
+  {
+    "id": "overlord-100km-03",
+    "cat": "nave",
+    "x": 45.0,
+    "y": 30.0,
+    "name": "Metric-Void Overlord Gamma-03",
+    "img": "assets/metric-void-overlord-100km.png",
+    "sub": "9 fortalezas herméticas de 100km",
+    "stats": {
+      "Tipo": "Fortaleza Hermética",
+      "Nodos": "3 (Brana IX)",
+      "Potencia": "9,42×10⁴² W",
+      "Peligro": "Nulo Absoluto"
+    },
+    "desc": "Chasis inmaterial hermético de escala planetaria con geometría no-euclidiana faceteada. Blindaje de aleación de Titanio-52 anómalo auto-reparable y paneles densos de carbono-grafeno molecular negro mate.",
+    "mission": "Custodia inmaterial y pre-carga pasiva de hangares Pocket-Universe Storage.",
+    "access": "Director Inmortal / Firma Nivel 9"
+  },
+  {
+    "id": "overlord-100km-04",
+    "cat": "nave",
+    "x": 50.0,
+    "y": 90.0,
+    "name": "Metric-Void Overlord Delta-04",
+    "img": "assets/metric-void-overlord-100km.png",
+    "sub": "9 fortalezas herméticas de 100km",
+    "stats": {
+      "Tipo": "Fortaleza Hermética",
+      "Nodos": "4 (Brana X)",
+      "Potencia": "9,42×10⁴² W",
+      "Peligro": "Nulo Absoluto"
+    },
+    "desc": "Chasis inmaterial hermético de escala planetaria con geometría no-euclidiana faceteada. Blindaje de aleación de Titanio-52 anómalo auto-reparable y paneles densos de carbono-grafeno molecular negro mate.",
+    "mission": "Acoplada a buses primarios de El Crisol del Origen para la estabilización multiversal pasiva.",
+    "access": "Director Inmortal / Firma Nivel 9"
+  },
+  {
+    "id": "overlord-100km-05",
+    "cat": "nave",
+    "x": 50.0,
+    "y": 27.0,
+    "name": "Metric-Void Overlord Epsilon-05",
+    "img": "assets/metric-void-overlord-100km.png",
+    "sub": "9 fortalezas herméticas de 100km",
+    "stats": {
+      "Tipo": "Fortaleza Hermética",
+      "Nodos": "5 (Brana X)",
+      "Potencia": "9,42×10⁴² W",
+      "Peligro": "Nulo Absoluto"
+    },
+    "desc": "Chasis inmaterial hermético de escala planetaria con geometría no-euclidiana faceteada. Blindaje de aleación de Titanio-52 anómalo auto-reparable y paneles densos de carbono-grafeno molecular negro mate.",
+    "mission": "Bloqueo perimetral y blindaje redundante de reactores analógicos de fase inversa.",
+    "access": "Director Inmortal / Firma Nivel 9"
+  },
+  {
+    "id": "overlord-100km-06",
+    "cat": "nave",
+    "x": 60.0,
+    "y": 15.0,
+    "name": "Metric-Void Overlord Zeta-06",
+    "img": "assets/metric-void-overlord-100km.png",
+    "sub": "9 fortalezas herméticas de 100km",
+    "stats": {
+      "Tipo": "Fortaleza Hermética",
+      "Nodos": "6 (Brana XII)",
+      "Potencia": "9,42×10⁴² W",
+      "Peligro": "Nulo Absoluto"
+    },
+    "desc": "Chasis inmaterial hermético de escala planetaria con geometría no-euclidiana faceteada. Blindaje de aleación de Titanio-52 anómalo auto-reparable y paneles densos de carbono-grafeno molecular negro mate.",
+    "mission": "Custodia física directa sobre el panel de interruptores de constantes universales.",
+    "access": "Director Inmortal / Firma Nivel 9"
+  },
+  {
+    "id": "overlord-100km-07",
+    "cat": "nave",
+    "x": 20.0,
+    "y": 80.0,
+    "name": "Metric-Void Overlord Eta-07",
+    "img": "assets/metric-void-overlord-100km.png",
+    "sub": "9 fortalezas herméticas de 100km",
+    "stats": {
+      "Tipo": "Fortaleza Hermética",
+      "Nodos": "7 (Púlsar)",
+      "Potencia": "9,42×10⁴² W",
+      "Peligro": "Nulo Absoluto"
+    },
+    "desc": "Chasis inmaterial hermético de escala planetaria con geometría no-euclidiana faceteada. Blindaje de aleación de Titanio-52 anómalo auto-reparable y paneles densos de carbono-grafeno molecular negro mate.",
+    "mission": "Almacenamiento táctico de la flota 3D en desuso dentro de su bodega de Entropía Cero.",
+    "access": "Director Inmortal / Firma Nivel 9"
+  },
+  {
+    "id": "overlord-100km-08",
+    "cat": "nave",
+    "x": 75.0,
+    "y": 33.0,
+    "name": "Metric-Void Overlord Theta-08",
+    "img": "assets/metric-void-overlord-100km.png",
+    "sub": "9 fortalezas herméticas de 100km",
+    "stats": {
+      "Tipo": "Fortaleza Hermética",
+      "Nodos": "8 (Brana XIV)",
+      "Potencia": "9,42×10⁴² W",
+      "Peligro": "Nulo Absoluto"
+    },
+    "desc": "Chasis inmaterial hermético de escala planetaria con geometría no-euclidiana faceteada. Blindaje de aleación de Titanio-52 anómalo auto-reparable y paneles densos de carbono-grafeno molecular negro mate.",
+    "mission": "Vaciado y descifrado de los arquetipos maestros de la Biblioteca de la Primera Iteración.",
+    "access": "Director Inmortal / Firma Nivel 9"
+  },
+  {
+    "id": "overlord-100km-09",
+    "cat": "nave",
+    "x": 85.0,
+    "y": 21.0,
+    "name": "Metric-Void Overlord Iota-09",
+    "img": "assets/metric-void-overlord-100km.png",
+    "sub": "9 fortalezas herméticas de 100km",
+    "stats": {
+      "Tipo": "Fortaleza Hermética",
+      "Nodos": "9 (Brana XV)",
+      "Potencia": "9,42×10⁴² W",
+      "Peligro": "Nulo Absoluto"
+    },
+    "desc": "Chasis inmaterial hermético de escala planetaria con geometría no-euclidiana faceteada. Blindaje de aleación de Titanio-52 anómalo auto-reparable y paneles densos de carbono-grafeno molecular negro mate.",
+    "mission": "Monitoreo perimetral y escaneo a 1.21 GW del Vacío Cuántico Amórfico exterior.",
+    "access": "Director Inmortal / Firma Nivel 9"
+  },
+  {
+    "id": "phobos-1.5km",
+    "cat": "nave",
+    "x": 29.5,
+    "y": 50.0,
+    "name": "Destructor-Phobos 1.5km",
+    "img": "assets/destructor-phobos-1.5km.png",
+    "sub": "37 destructores estelares",
+    "stats": {
+      "Tipo": "nave",
+      "Nodos": "37",
+      "Potencia": "3,19×10⁴⁵ W",
+      "Peligro": "Restringido"
+    },
+    "desc": "Asalto pesado en el Bulk 5D, patrulla de perímetros de exclusión y supresión de firmas métricas hostiles mediante reactores ARC de estado sólido.",
+    "mission": "«Guardianes de la Red» — Ronda de mantenimiento en tres nodos simultáneos.",
+    "access": "Ingeniero certificado Merkaba"
+  },
+  {
+    "id": "kronos-titan-1.2km",
+    "cat": "nave",
+    "x": 10.0,
+    "y": 50.0,
+    "name": "Megameca Kronos-Titán SC1",
+    "img": "assets/KRONOS-TITAN SC1.png",
+    "sub": "1 autómata de combate e industria",
+    "stats": {
+      "Tipo": "Meca Humanoide",
+      "Nodos": "1 (Sagitario A*)",
+      "Potencia": "Estabilizada",
+      "Peligro": "Alfa Máximo"
+    },
+    "desc": "Autómata industrial de combate humanoide colosal. Chasis de Titanio-52 anómalo y musculatura sintética electroactiva protegida por grafeno y silicato vítreo puro.",
+    "mission": "Custodia y blindaje físico de la Esclusa Coherente de Kerr en el centro galáctico.",
+    "access": "Director Inmortal / Firma Nivel 9"
+  },
+  {
+    "id": "phantom-x-drone",
+    "cat": "drone",
+    "x": 21.0,
+    "y": 79.0,
+    "name": "Drone Von Neumann Serie Phantom-X",
+    "img": "assets/drone-von-neumann-phantom-x.png",
+    "sub": "Enjambres de micromanufactura",
+    "stats": {
+      "Tipo": "Dispositivo Mecánico",
+      "Nodos": "Múltiple (Astillero)",
+      "Potencia": "Focalizada THz",
+      "Peligro": "Bajo Control"
+    },
+    "desc": "Drone robótico flotante de geometría esférica compacta con un diámetro exacto de 1.8 metros, mecanizado con núcleos expuestos de plasma de baja temperatura.",
+    "mission": "Proyección de láser microcomb de terahercios para ensamblaje atómico y vitrofusión.",
+    "access": "Operador de Astillero / Core-AI"
+  },
+  {
+    "id": "atlantis-50km-pacifico",
+    "cat": "ciudad",
+    "x": 52.0,
+    "y": 48.0,
+    "name": "Ciudadela Flotante Atlantis 4.0 Pacífico",
+    "img": "assets/ciudadela-atlantis-4.0.png",
+    "sub": "Macro-Nodo Terrestre I",
+    "stats": {
+      "Tipo": "Complejo Residencial",
+      "Nodos": "Tierra-Edén",
+      "Potencia": "Autárquica",
+      "Peligro": "Cero Real"
+    },
+    "desc": "Superestructura residencial masiva de 50.0 km de diámetro exterior con paneles de grafeno blanco pulido y ventanales curvos de silicato cuántico no-euclidiano.",
+    "mission": "Presurización a 1.00 Atm y 22°C para albergar a 300 Millones de habitantes dinámicos.",
+    "access": "Ciudadano Inmortal / GÉNESIS 5.0"
+  },
+  {
+    "id": "atlantis-50km-atlantico",
+    "cat": "ciudad",
+    "x": 48.0,
+    "y": 52.0,
+    "name": "Ciudadela Flotante Atlantis 4.0 Atlántico",
+    "img": "assets/ciudadela-atlantis-4.0.png",
+    "sub": "Macro-Nodo Terrestre II",
+    "stats": {
+      "Tipo": "Complejo Residencial",
+      "Nodos": "Tierra-Edén",
+      "Potencia": "Autárquica",
+      "Peligro": "Cero Real"
+    },
+    "desc": "Superestructura residencial masiva duplicada en espejo de 50.0 km de diámetro con protección nativa contra la entropía molecular ordinaria.",
+    "mission": "Presurización y soporte vital para albergar a 500 Millones de habitantes dinámicos.",
+    "access": "Ciudadano Inmortal / GÉNESIS 5.0"
+  },
+  {
+    "id": "artemis-12km-domo",
+    "cat": "ciudad",
+    "x": 45.0,
+    "y": 15.0,
+    "name": "Domo Residencial Artemis Sector",
+    "img": "assets/domo-artemis-12km.png",
+    "sub": "Módulos de Alta Frontera",
+    "stats": {
+      "Tipo": "Domo Geodésico",
+      "Nodos": "100 (Brana IX)",
+      "Potencia": "Fase Inversa",
+      "Peligro": "Cero Real"
+    },
+    "desc": "Superestructura geodésica de 12.0 kilómetros de diámetro y retícula autoportante de titanio estructural pulido con triple capa de polímeros ópticos avanzados.",
+    "mission": "Albergar de forma cómoda a 100 Millones de inmortales bajo la luz omnipresente.",
+    "access": "Ciudadano Inmortal / GÉNESIS 5.0"
+  },
+  {
+    "id": "q-net-vanguard-caza",
+    "cat": "nave",
+    "x": 70.0,
+    "y": 64.0,
+    "name": "Caza Furtivo Q-NET Vanguard",
+    "img": "assets/Q-NET VANGUARD.png",
+    "sub": "410 millones de cazas",
+    "stats": {
+      "Tipo": "Aeronave de Escolta",
+      "Nodos": "Formación Táctica",
+      "Potencia": "Baja Frecuencia",
+      "Peligro": "Bajo Control"
+    },
+    "desc": "Fusilaje aerodinámico en ala delta de 24 metros de envergadura, construido con un compuesto cerámico de silicato translúcido y camuflaje absoluto STONE_CLOAK.",
+    "mission": "Reconocimiento y escolta perimetral en la barrera invertida de la Brana XV.",
+    "access": "Piloto de Flota Sombra / Core-AI"
   }
 ]
