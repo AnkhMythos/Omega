@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imperio Omega · Carta de Navegación Interactiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="brand-mark"></div>
+    <div class="brand-text">
+      <div class="eyebrow">Fase VI · v210.0</div>
+      <h1>IMPERIO <span>OMEGA</span></h1>
+    </div>
+  </div>
+  <div class="hud-stats">
+    <div class="hud-stat"><div class="v">7.630 Bn</div><div class="l">Almas conscientes</div></div>
+    <div class="hud-stat"><div class="v">2.731</div><div class="l">Nodos activos</div></div>
+    <div class="hud-stat"><div class="v">20/20</div><div class="l">Branas</div></div>
+    <div class="hud-stat"><div class="v">Tipo VI</div><div class="l">Escala Kardashev</div></div>
+  </div>
+</header>
+<!-- <section class="hero">
+  <div class="kicker">Carta de navegación cenital · Trans-multiversal</div>
+  <h2>Explora el mapa. Descubre cada expediente.<br>Elige tu ruta a través de 20 branas.</h2>
+  <p>Esta es la sala de navegación del Imperio Omega: cada punto de luz sobre la carta es un nodo jugable — agujero negro, púlsar, brana o región — con su propio expediente, nivel de peligro y misión disponible.</p>
+  <div class="hint"><span class="dot"></span> Pasá el mouse sobre un marcador del mapa para abrir su ficha</div>
+</section> -->
+
+<div class="stage" id="stage">
+
+  <!-- MAP -->
+  <div class="map-wrap">
+    <div class="map-frame" id="mapFrame">
+      <img src="assets/mapa-cenital.png" alt="Carta de navegación cenital del Imperio Omega">
+      <div class="map-vignette"></div>
+      <svg class="ring-overlay" id="ringOverlay" viewBox="0 0 1774 887" preserveAspectRatio="none"></svg>
+      <div id="hotspots"></div>
+      <div id="shipsLayer" aria-label="Naves posicionadas por coordenadas"></div>
+      <div class="map-legend">
+        <div class="li"><span class="sw sw-gold"></span>Núcleo / Control</div>
+        <div class="li"><span class="sw sw-cyan"></span>Agujero negro</div>
+        <div class="li"><span class="sw sw-violet"></span>Púlsar / Estrella</div>
+        <div class="li"><span class="sw sw-teal"></span>Región habitada</div>
+        <div class="li"><span class="sw sw-magenta"></span>Brana (anillo)</div>
+        <div class="li"><span class="sw sw-ship"></span>Nave capital</div>
+      </div>
+    </div>
+  </div>
+
+<!-- BRANES SIDEBAR (collapsible) -->
+  <aside class="branes-panel" id="branesPanel">
+    <div class="branes-head">
+      <h3>Jerarquía de Branas</h3>
+      <button class="collapse-btn" id="collapseBtn" title="Ocultar panel">«</button>
+    </div>
+    <div class="sub">I — XX · 2.731 nodos</div>
+    <ul class="brane-list" id="braneList"></ul>
+  </aside>
+
+  <button class="reopen-tab" id="reopenTab">» Branas</button>
+
+</div>
+
+<div class="data-error" id="dataError" role="alert" aria-live="polite"></div>
+
+<footer>
+  Exploración trans-multiversal — construido sobre la Carta de Navegación Cenital del Imperio Omega [Fase VI]. Fan-content narrativo, sin afiliación real.
+</footer>
+
+<div class="ficha-card" id="fichaCard">
+  <div class="fc-image" id="fcImage"></div>
+  <button class="fc-close" id="fcClose">✕</button>
+  <div class="fc-body">
+    <span class="fc-tag" id="fcTag">Categoría</span>
+    <h3 id="fcName">Nombre</h3>
+    <div class="fc-sub" id="fcSub">Subtítulo</div>
+    <div class="fc-stats" id="fcStats"></div>
+    <p class="fc-desc" id="fcDesc"></p>
+    <div class="fc-mission">
+      <div class="l">Misión disponible</div>
+      <p id="fcMission"></p>
+    </div>
+    <div class="fc-access">Acceso requerido: <span id="fcAccess">—</span></div>
+  </div>
+</div>
+
+
+
+<script>
+/* ================== DATA ==================
+   Todos los datos se cargan desde archivos JSON externos mediante fetch().
+   No hay copias JSON embebidas en este HTML. */
+const CATC = {
+  nucleo:'#e8b35a', control:'#e8b35a', agujero:'#5fe6f2',
+  pulsar:'#b083ea', estrella:'#b083ea', region:'#4fd8b0', brana:'#e0679f', red:'#e8b35a', nave:'#e9edf5'
+};
+const CATLABEL = {
+  nucleo:'Núcleo', control:'Sistema de control', agujero:'Agujero negro',
+  pulsar:'Púlsar', estrella:'Estrella anómala', region:'Región habitada',
+  brana:'Brana dimensional', red:'Red de energía'
+};
+
+let NODES = [];
+let BRANES = [];
+let NAVES = [];
+
+async function loadData(){
+  const urls = [
+    ['nodos', 'data/nodes.json'],
+    ['branas', 'data/branes.json'],
+    ['naves', 'data/nodes.json']
+  ];
+
+  try{
+    const responses = await Promise.all(
+      urls.map(([, url]) => fetch(url, { cache:'no-store' }))
+    );
+
+    const failedIndex = responses.findIndex(r => !r.ok);
+    if(failedIndex !== -1){
+      throw new Error(`No se pudo cargar ${urls[failedIndex][1]} (${responses[failedIndex].status})`);
+    }
+
+    [NODES, BRANES, NAVES] = await Promise.all(responses.map(r => r.json()));
+  }catch(err){
+    console.error('Error cargando datos JSON:', err);
+    showDataError('No se pudieron cargar los JSON. Ejecutá la carta desde un servidor HTTP/HTTPS (por ejemplo Live Server).');
+    throw err;
+  }
+}
+
+/* ================== ICONS (imagen de cada card, SVG generado) ================== */
+function hashSeed(str){ let h=0; for(let i=0;i<str.length;i++){ h=(h*31+str.charCodeAt(i))>>>0; } return h; }
+
+function iconAgujero(color, seed){
+  const tilt = -14 + (seed%12);
+  return `<svg viewBox="0 0 300 112" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="112" fill="#05070d"/>
+    <g transform="rotate(${tilt} 150 56)">
+      <ellipse cx="150" cy="56" rx="118" ry="13" fill="none" stroke="${color}" stroke-width="1.6" opacity="0.45"/>
+      <ellipse cx="150" cy="56" rx="86" ry="8" fill="none" stroke="${color}" stroke-width="3" opacity="0.85"/>
+    </g>
+    <circle cx="150" cy="56" r="25" fill="#000"/>
+    <circle cx="150" cy="56" r="25" fill="none" stroke="${color}" stroke-width="1" opacity="0.5"/>
+  </svg>`;
+}
+function iconPulsar(color, seed){
+  const angle = seed%180;
+  return `<svg viewBox="0 0 300 112" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="112" fill="#05070d"/>
+    <g transform="rotate(${angle} 150 56)">
+      <polygon points="150,56 220,20 220,92" fill="${color}" opacity="0.18"/>
+      <polygon points="150,56 80,20 80,92" fill="${color}" opacity="0.18"/>
+    </g>
+    <circle cx="150" cy="56" r="10" fill="${color}"/>
+    <circle cx="150" cy="56" r="18" fill="none" stroke="${color}" opacity="0.5"/>
+    <circle cx="150" cy="56" r="27" fill="none" stroke="${color}" opacity="0.25"/>
+  </svg>`;
+}
+function iconNucleo(color, seed){
+  return `<svg viewBox="0 0 300 112" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="112" fill="#05070d"/>
+    <ellipse cx="150" cy="56" rx="110" ry="16" fill="none" stroke="${color}" stroke-width="1" opacity="0.35"/>
+    <circle cx="150" cy="56" r="30" fill="none" stroke="${color}" stroke-width="1.5" opacity="0.5"/>
+    <circle cx="150" cy="56" r="22" fill="#0e1626" stroke="${color}" stroke-width="1.5"/>
+    <path d="M132 46 L168 46 M128 56 L172 56 M132 66 L168 66" stroke="${color}" stroke-width="1" opacity="0.7"/>
+  </svg>`;
+}
+function iconRegion(color, seed){
+  const pts=[]; const rnd=(i)=> ( (seed*(i+7))%37 )/37;
+  for(let i=0;i<9;i++){ pts.push([40+rnd(i)*220, 20+rnd(i+3)*70]); }
+  let dots='', lines='';
+  pts.forEach((p,i)=>{ dots+=`<circle cx="${p[0]}" cy="${p[1]}" r="2.4" fill="${color}"/>`;
+    if(i>0) lines+=`<line x1="${pts[i-1][0]}" y1="${pts[i-1][1]}" x2="${p[0]}" y2="${p[1]}" stroke="${color}" stroke-width="0.6" opacity="0.35"/>`; });
+  return `<svg viewBox="0 0 300 112" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="112" fill="#05070d"/>${lines}${dots}</svg>`;
+}
+function iconBrana(color, seed){
+  const rot = seed%60;
+  return `<svg viewBox="0 0 300 112" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="112" fill="#05070d"/>
+    <g transform="translate(150 56) rotate(${rot})">
+      <polygon points="0,-40 35,20 -35,20" fill="none" stroke="${color}" stroke-width="1.4" opacity="0.9"/>
+      <polygon points="0,-26 23,13 -23,13" fill="none" stroke="${color}" stroke-width="1.1" opacity="0.6"/>
+      <polygon points="0,-14 12,7 -12,7" fill="none" stroke="${color}" stroke-width="0.9" opacity="0.4"/>
+    </g>
+  </svg>`;
+}
+function iconRed(color, seed){
+  let shapes='';
+  for(let i=0;i<5;i++){
+    const x = 35+i*57, y = 56 + (i%2===0? -18: 18), s = 12;
+    shapes+=`<polygon transform="translate(${x} ${y})" points="0,-${s} ${s},${s} -${s},${s}" fill="none" stroke="${color}" stroke-width="1.2" opacity="0.8"/>`;
+  }
+  return `<svg viewBox="0 0 300 112" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="112" fill="#05070d"/>
+    <line x1="35" y1="38" x2="263" y2="74" stroke="${color}" stroke-width="0.6" opacity="0.3"/>
+    ${shapes}</svg>`;
+}
+function generateIcon(cat, id){
+  const seed = hashSeed(id); const color = CATC[cat];
+  if(cat==='agujero') return iconAgujero(color, seed);
+  if(cat==='pulsar' || cat==='estrella') return iconPulsar(color, seed);
+  if(cat==='nucleo' || cat==='control') return iconNucleo(color, seed);
+  if(cat==='region') return iconRegion(color, seed);
+  if(cat==='brana') return iconBrana(color, seed);
+  if(cat==='red') return iconRed(color, seed);
+  return iconNucleo(color, seed);
+}
+
+/* ================== RENDER MAP + SIDEBAR ================== */
+const hotspotsEl = document.getElementById('hotspots');
+const shipsLayerEl = document.getElementById('shipsLayer');
+const braneListEl = document.getElementById('braneList');
+const ringOverlay = document.getElementById('ringOverlay');
+const dataErrorEl = document.getElementById('dataError');
+const cx = 887, cy = 443.5;
+
+const MAP_CENTER = { x:50, y:50 };
+const MAP_RADIUS_SCALE = 50; // radio U=1.00 representa el 50% del área útil
+
+
+function showDataError(message){
+  if(!dataErrorEl) return;
+  dataErrorEl.textContent = message;
+  dataErrorEl.classList.add('show');
+}
+
+function polarToMapPosition(coords){
+  const radius = Number(coords?.radio_concéntrico_u ?? 0);
+  const angleDeg = Number(coords?.angulo_fase_deg ?? 0);
+  const angle = angleDeg * Math.PI / 180;
+
+  // Vista cenital: 0° apunta a la derecha; ángulos positivos giran antihorario.
+  const x = MAP_CENTER.x + (radius * MAP_RADIUS_SCALE * Math.cos(angle));
+  const y = MAP_CENTER.y - (radius * MAP_RADIUS_SCALE * Math.sin(angle));
+
+  return {
+    x: Math.max(1, Math.min(99, x)),
+    y: Math.max(1, Math.min(99, y))
+  };
+}
+
+function renderShips(){
+  shipsLayerEl.innerHTML = '';
+
+  NAVES.forEach(nave => {
+    const coords = nave.coordenadas_mapa || {};
+    const pos = polarToMapPosition(coords);
+    const z = Number(coords.vector_z || 0);
+
+    const el = document.createElement('button');
+    el.type = 'button';
+    el.className = 'hotspot ship';
+    el.dataset.id = nave.id_nave;
+    el.title = `${nave.nombre} · ${coords.brana_capa}`;
+    el.style.left = `${pos.x}%`;
+    el.style.top = `${pos.y}%`;
+    el.style.setProperty('--z-scale', String(Math.max(0.82, Math.min(1.45, 1 + z * 0.06))));
+    el.style.setProperty('--z-index', String(Math.round(20 + z * 10)));
+
+    el.innerHTML = `
+      <span class="ring"></span>
+      <span class="core"></span>
+      <span class="ship-label">${nave.id_nave}</span>
+    `;
+
+    el.addEventListener('mouseenter', () => showShipCard(nave, el));
+    el.addEventListener('mouseleave', scheduleHide);
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showShipCard(nave, el, true);
+    });
+
+    shipsLayerEl.appendChild(el);
+  });
+}
+
+function renderMap(){
+  // --- nodos del mapa: mouseover abre ficha, click la fija ---
+  NODES.forEach(n=>{
+    const el = document.createElement('div');
+    el.className='hotspot';
+    el.style.left = n.x+'%';
+    el.style.top = n.y+'%';
+    el.style.setProperty('--dot', CATC[n.cat]);
+    el.innerHTML = `<div class="ring"></div><div class="core"></div>`;
+    el.addEventListener('mouseenter', ()=> showNodeCard(n, el));
+    el.addEventListener('mouseleave', scheduleHide);
+    el.addEventListener('click', (e)=>{ e.stopPropagation(); showNodeCard(n, el, true); });
+    hotspotsEl.appendChild(el);
+  });
+
+  // --- branas del panel lateral: mismo comportamiento, mouseover abre ficha, click la fija ---
+  BRANES.forEach(b=>{
+    const li = document.createElement('li');
+    li.className='brane-item';
+    li.dataset.id = b.n;
+    li.innerHTML = `<span class="numeral">${b.n}</span><span class="name">${b.name}</span>${b.ring?'<span class="ring-tag">ANILLO</span>':''}`;
+    li.addEventListener('mouseenter', ()=> showBraneCard(b, li));
+    li.addEventListener('mouseleave', scheduleHide);
+    li.addEventListener('click', (e)=>{ e.stopPropagation(); showBraneCard(b, li, true); });
+    braneListEl.appendChild(li);
+  });
+
+  // --- anillos de las 7 branas de frontera, dibujados sobre el mapa ---
+  BRANES.filter(b=>b.ring).forEach(b=>{
+    const r = (b.radius/100) * 887;
+    const c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    c.setAttribute('cx', cx); c.setAttribute('cy', cy); c.setAttribute('rx', r*1.62); c.setAttribute('r', r);
+    c.setAttribute('id', 'ring-'+b.n);
+    ringOverlay.appendChild(c);
+  });
+
+  renderShips();
+}
+
+/* ================== FICHA CARD LOGIC ================== */
+const card = document.getElementById('fichaCard');
+const fcImage = document.getElementById('fcImage');
+const fcTag = document.getElementById('fcTag');
+const fcName = document.getElementById('fcName');
+const fcSub = document.getElementById('fcSub');
+const fcStats = document.getElementById('fcStats');
+const fcDesc = document.getElementById('fcDesc');
+const fcMission = document.getElementById('fcMission');
+const fcAccess = document.getElementById('fcAccess');
+const fcClose = document.getElementById('fcClose');
+
+let hideTimer = null;
+let pinned = false;
+let activeHotspot = null;
+
+function clearRingHighlights(){
+  document.querySelectorAll('.ring-overlay circle').forEach(c=>c.classList.remove('show'));
+  document.querySelectorAll('.brane-item').forEach(li=>li.classList.remove('active'));
+  document.querySelectorAll('.hotspot').forEach(h=>h.classList.remove('active'));
+}
+
+function positionCard(anchorRect){
+  const margin = 14;
+  const cw = 302, viewportW = window.innerWidth, viewportH = window.innerHeight;
+  let left = anchorRect.right + margin;
+  if(left + cw > viewportW - margin) left = anchorRect.left - cw - margin;
+  if(left < margin) left = Math.min(Math.max(anchorRect.left, margin), viewportW - cw - margin);
+  let top = anchorRect.top - 10;
+  card.style.left = left+'px';
+  // set temp to measure height
+  card.style.top = top+'px';
+  requestAnimationFrame(()=>{
+    const ch = card.offsetHeight;
+    let t = top;
+    if(t + ch > viewportH - margin) t = viewportH - ch - margin;
+    if(t < margin) t = margin;
+    card.style.top = t+'px';
+  });
+}
+
+function resolveImageSrc(imgSrc){
+  if(!imgSrc) return '';
+  const src = String(imgSrc).trim();
+  return src || '';
+}
+
+function fillCard(cat, iconId, tagLabel, name, sub, statsObj, desc, mission, access, imgSrc){
+  fcImage.innerHTML = '';
+  const resolvedImg = resolveImageSrc(imgSrc);
+  if(resolvedImg){
+    const img = document.createElement('img');
+    img.src = resolvedImg;
+    img.alt = name;
+    img.onerror = ()=>{
+      img.remove();
+      fcImage.innerHTML = generateIcon(cat, iconId);
+    };
+    fcImage.appendChild(img);
+  } else {
+    fcImage.innerHTML = generateIcon(cat, iconId);
+  }
+  fcTag.textContent = tagLabel;
+  fcTag.style.setProperty('--tagc', CATC[cat]);
+  fcName.textContent = name;
+  fcSub.textContent = sub;
+  fcStats.innerHTML = Object.entries(statsObj).map(([l,v])=>`<div class="fc-stat"><div class="l">${l}</div><div class="v">${v}</div></div>`).join('');
+  fcDesc.textContent = desc;
+  fcMission.textContent = mission;
+  fcAccess.textContent = access;
+}
+
+function showNodeCard(n, el, pin){
+  cancelHide();
+  clearRingHighlights();
+  el.classList.add('active');
+  activeHotspot = el;
+  fillCard(n.cat, n.id, CATLABEL[n.cat], n.name, n.sub, n.stats, n.desc, n.mission, n.access, n.img);
+  pinned = !!pin;
+  card.classList.toggle('pinned', pinned);
+  positionCard(el.getBoundingClientRect());
+  card.classList.add('open');
+}
+
+function showShipCard(nave, el, pin){
+  cancelHide();
+  clearRingHighlights();
+  el.classList.add('active');
+  activeHotspot = el;
+
+  const c = nave.coordenadas_mapa || {};
+  const statsObj = {
+    'ID': nave.id_nave,
+    'Longitud': `${nave.dimension_longitud_km} km`,
+    'Brana / capa': c.brana_capa || '—',
+    'Radio U': Number(c.radio_concéntrico_u ?? 0).toFixed(2),
+    'Ángulo de fase': `${Number(c.angulo_fase_deg ?? 0).toFixed(1)}°`,
+    'Vector Z': Number(c.vector_z ?? 0).toFixed(2)
+  };
+
+  fillCard(
+    'control',
+    nave.id_nave,
+    'Nave capital',
+    nave.nombre,
+    nave.clase,
+    statsObj,
+    `Posición calculada desde coordenadas cenitales: radio U ${statsObj['Radio U']}, fase ${statsObj['Ángulo de fase']}, vector Z ${statsObj['Vector Z']}.`,
+    nave.estado_mision,
+    'Comando de flota',
+    null
+  );
+
+  pinned = !!pin;
+  card.classList.toggle('pinned', pinned);
+  positionCard(el.getBoundingClientRect());
+  card.classList.add('open');
+}
+
+function showBraneCard(b, li, pin){
+  cancelHide();
+  clearRingHighlights();
+  li.classList.add('active');
+  if(b.ring){ const circle = document.getElementById('ring-'+b.n); if(circle) circle.classList.add('show'); }
+  const statsObj = { Numeral:'Brana '+b.n+' / XX', Estado:b.estado, Peligro:b.peligro, Tipo:b.ring?'Anillo visible':'Núcleo interior' };
+  fillCard('brana', 'brana-'+b.n, 'Brana '+b.n, b.name, b.ring?'Anillo de confinamiento sandbox':'Brana interior integrada', statsObj, b.desc, b.mission, b.ring?'Autorización de frontera':'Ciudadano verificado', null);
+  pinned = !!pin;
+  card.classList.toggle('pinned', pinned);
+  positionCard(li.getBoundingClientRect());
+  card.classList.add('open');
+}
+
+function scheduleHide(){
+  if(pinned) return;
+  hideTimer = setTimeout(hideCard, 160);
+}
+function cancelHide(){ if(hideTimer){ clearTimeout(hideTimer); hideTimer=null; } }
+function hideCard(){
+  card.classList.remove('open');
+  pinned = false;
+  card.classList.remove('pinned');
+  clearRingHighlights();
+}
+card.addEventListener('mouseenter', cancelHide);
+card.addEventListener('mouseleave', ()=>{ if(!pinned) scheduleHide(); });
+fcClose.addEventListener('click', hideCard);
+document.addEventListener('click', (e)=>{ if(pinned && !card.contains(e.target)) hideCard(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') hideCard(); });
+
+/* ================== COLLAPSIBLE BRANES PANEL ================== */
+const branesPanel = document.getElementById('branesPanel');
+const collapseBtn = document.getElementById('collapseBtn');
+const reopenTab = document.getElementById('reopenTab');
+
+function setCollapsed(collapsed){
+  branesPanel.classList.toggle('collapsed', collapsed);
+  reopenTab.classList.toggle('show', collapsed);
+}
+collapseBtn.addEventListener('click', ()=> setCollapsed(true));
+reopenTab.addEventListener('click', ()=> setCollapsed(false));
+
+/* ================== INIT ================== */
+loadData().then(renderMap).catch(()=>{});
+</script>
+</body>
+</html>
