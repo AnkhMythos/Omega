@@ -20,10 +20,10 @@
   {
     "id": "atlantis-pacifico",
     "cat": "nucleo",
-    "x": 44.9,
-    "y": 45.3,
+    "x": 40.9,
+    "y": 40.3,
     "name": "Atlantis-Soberanía (Pacífico)",
-    "img": "assets/Atlantis3.png",
+    "img": "Assets/Atlantis3.png",
     "sub": "Enclave oceánico — 300M habitantes",
     "stats": {
       "Tipo": "Metrópoli sumergida",
@@ -39,9 +39,9 @@
     "id": "atlantis-atlantico",
     "cat": "nucleo",
     "x": 55.1,
-    "y": 42.6,
+    "y": 40.6,
     "name": "Atlantis-Soberanía II (Atlántico)",
-    "img": "assets/Atlantis4.png",
+    "img": "Assets/Atlantis4.png",
     "sub": "Enclave oceánico — 500M habitantes",
     "stats": {
       "Tipo": "Metrópoli sumergida",
@@ -77,7 +77,7 @@
     "x": 62.2,
     "y": 41.8,
     "name": "Kronos-Titán SC1 [v4.0]",
-    "img": "assets/KRONOS-TITAN SC1.png",
+    "img": "Assets/KRONOS-TITAN SC1.png",
     "sub": "Megameca de combate — 1.2 km",
     "stats": {
       "Tipo": "Plataforma de guerra",
@@ -329,7 +329,7 @@
     "x": 29.5,
     "y": 85,
     "name": "Red Suprema Merkaba 4.0",
-    "img": "assets/Merkaba-Pulsar.png",
+    "img": "Assets/Merkaba-Pulsar.png",
     "sub": "37 nodos estelares diedro-tetraédricos",
     "stats": {
       "Tipo": "Red energética",
@@ -347,7 +347,7 @@
     "x": 29.5,
     "y": 50,
     "name": "Destructor-Phobos 1.5km",
-    "img": "assets/destructor-phobos-1.5km.png",
+    "img": "Assets/destructor-phobos-1.5km.png",
     "sub": "37 destructores estelares",
     "stats": {
       "Tipo": "nave",
@@ -365,7 +365,7 @@
     "x": 35.0,
     "y": 45.0,
     "name": "Metric-Void Overlord Alpha-01",
-    "img": "assets/metric-void-overlord-100km.png",
+    "img": "Assets/metric-void-overlord-100km.png",
     "sub": "9 fortalezas herméticas de 100km",
     "stats": {
       "Tipo": "Fortaleza Hermética",
@@ -383,7 +383,7 @@
     "x": 45.0,
     "y": 12.0,
     "name": "Metric-Void Overlord Beta-02",
-    "img": "assets/metric-void-overlord-100km.png",
+    "img": "Assets/metric-void-overlord-100km.png",
     "sub": "9 fortalezas herméticas de 100km",
     "stats": {
       "Tipo": "Fortaleza Hermética",
@@ -401,7 +401,7 @@
     "x": 45.0,
     "y": 30.0,
     "name": "Metric-Void Overlord Gamma-03",
-    "img": "assets/metric-void-overlord-100km.png",
+    "img": "Assets/metric-void-overlord-100km.png",
     "sub": "9 fortalezas herméticas de 100km",
     "stats": {
       "Tipo": "Fortaleza Hermética",
@@ -419,7 +419,7 @@
     "x": 50.0,
     "y": 90.0,
     "name": "Metric-Void Overlord Delta-04",
-    "img": "assets/metric-void-overlord-100km.png",
+    "img": "Assets/metric-void-overlord-100km.png",
     "sub": "9 fortalezas herméticas de 100km",
     "stats": {
       "Tipo": "Fortaleza Hermética",
@@ -437,7 +437,7 @@
     "x": 50.0,
     "y": 27.0,
     "name": "Metric-Void Overlord Epsilon-05",
-    "img": "assets/metric-void-overlord-100km.png",
+    "img": "Assets/metric-void-overlord-100km.png",
     "sub": "9 fortalezas herméticas de 100km",
     "stats": {
       "Tipo": "Fortaleza Hermética",
@@ -455,7 +455,7 @@
     "x": 60.0,
     "y": 15.0,
     "name": "Metric-Void Overlord Zeta-06",
-    "img": "assets/metric-void-overlord-100km.png",
+    "img": "Assets/metric-void-overlord-100km.png",
     "sub": "9 fortalezas herméticas de 100km",
     "stats": {
       "Tipo": "Fortaleza Hermética",
@@ -473,7 +473,7 @@
     "x": 20.0,
     "y": 80.0,
     "name": "Metric-Void Overlord Eta-07",
-    "img": "assets/metric-void-overlord-100km.png",
+    "img": "Assets/metric-void-overlord-100km.png",
     "sub": "9 fortalezas herméticas de 100km",
     "stats": {
       "Tipo": "Fortaleza Hermética",
@@ -491,7 +491,7 @@
     "x": 75.0,
     "y": 33.0,
     "name": "Metric-Void Overlord Theta-08",
-    "img": "assets/metric-void-overlord-100km.png",
+    "img": "Assets/metric-void-overlord-100km.png",
     "sub": "9 fortalezas herméticas de 100km",
     "stats": {
       "Tipo": "Fortaleza Hermética",
@@ -509,7 +509,7 @@
     "x": 85.0,
     "y": 21.0,
     "name": "Metric-Void Overlord Iota-09",
-    "img": "assets/metric-void-overlord-100km.png",
+    "img": "Assets/metric-void-overlord-100km.png",
     "sub": "9 fortalezas herméticas de 100km",
     "stats": {
       "Tipo": "Fortaleza Hermética",
@@ -527,7 +527,7 @@
     "x": 29.5,
     "y": 50.0,
     "name": "Destructor-Phobos 1.5km",
-    "img": "assets/destructor-phobos-1.5km.png",
+    "img": "Assets/destructor-phobos-1.5km.png",
     "sub": "37 destructores estelares",
     "stats": {
       "Tipo": "nave",
@@ -545,7 +545,7 @@
     "x": 10.0,
     "y": 50.0,
     "name": "Megameca Kronos-Titán SC1",
-    "img": "assets/KRONOS-TITAN SC1.png",
+    "img": "Assets/KRONOS-TITAN SC1.png",
     "sub": "1 autómata de combate e industria",
     "stats": {
       "Tipo": "Meca Humanoide",
@@ -563,7 +563,7 @@
     "x": 21.0,
     "y": 79.0,
     "name": "Drone Von Neumann Serie Phantom-X",
-    "img": "assets/drone-von-neumann-phantom-x.png",
+    "img": "Assets/drone-von-neumann-phantom-x.png",
     "sub": "Enjambres de micromanufactura",
     "stats": {
       "Tipo": "Dispositivo Mecánico",
@@ -579,9 +579,9 @@
     "id": "atlantis-50km-pacifico",
     "cat": "ciudad",
     "x": 52.0,
-    "y": 48.0,
+    "y": 38.0,
     "name": "Ciudadela Flotante Atlantis 4.0 Pacífico",
-    "img": "assets/ciudadela-atlantis-4.0.png",
+    "img": "Assets/ciudadela-atlantis-4.0.png",
     "sub": "Macro-Nodo Terrestre I",
     "stats": {
       "Tipo": "Complejo Residencial",
@@ -596,10 +596,10 @@
   {
     "id": "atlantis-50km-atlantico",
     "cat": "ciudad",
-    "x": 48.0,
-    "y": 52.0,
+    "x": 55.0,
+    "y": 55.0,
     "name": "Ciudadela Flotante Atlantis 4.0 Atlántico",
-    "img": "assets/ciudadela-atlantis-4.0.png",
+    "img": "Assets/ciudadela-atlantis-4.0.png",
     "sub": "Macro-Nodo Terrestre II",
     "stats": {
       "Tipo": "Complejo Residencial",
@@ -617,7 +617,7 @@
     "x": 45.0,
     "y": 15.0,
     "name": "Domo Residencial Artemis Sector",
-    "img": "assets/domo-artemis-12km.png",
+    "img": "Assets/domo-artemis-12km.png",
     "sub": "Módulos de Alta Frontera",
     "stats": {
       "Tipo": "Domo Geodésico",
@@ -635,7 +635,7 @@
     "x": 70.0,
     "y": 64.0,
     "name": "Caza Furtivo Q-NET Vanguard",
-    "img": "assets/Q-NET VANGUARD.png",
+    "img": "Assets/Q-NET VANGUARD.png",
     "sub": "410 millones de cazas",
     "stats": {
       "Tipo": "Aeronave de Escolta",
